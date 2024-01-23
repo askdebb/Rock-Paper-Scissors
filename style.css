@@ -3,12 +3,122 @@
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
+    color: #3A3A3A;
 }
+
+body {
+    background-color: #E5E5E5;
+}
+
+.container {
+    /* background-color: #fff; */
+    width: 70%;
+    margin: 0 auto;
+    /* padding: 100px; */
+    height: 100%;
+}
+
+.container-header {
+    /* background-color: #fff; */
+    padding: 10px 0;
+    margin: 10px 0;
+    margin-bottom: 0;
+}
+
+h1 {
+    background-color: rgb(255, 255, 115);
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 8rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+#p-red {
+    background-color: red;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 2rem;
+    color: #E5E5E5;
+}
+
+p {
+    /* background-color: red; */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 2rem;
+    color: #3A3A3A;
+    font-weight: 600;
+}
+
+.container-element-show {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #C9C9C9;
+    padding: 5rem ;
+}
+
+.container-brave {
+    display: flex;
+    padding: 3rem 1rem;
+    background-color: #d6d4d4;
+    align-items: center;
+    justify-content: space-around;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.brave-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: 0.4s ease;
+}
+#btn-yes {
+    margin-left: -60px;
+    background-color: #5cb45c;
+    color: #E5E5E5;
+}
+#btn-no {
+    margin-left: 30px;
+    background-color: #c04f4f;
+    color: #E5E5E5;
+}
+
+#btn-yes:hover {
+    background-color: green;
+    color: #fff;
+    font-weight: 600;
+   
+}
+
+
+#btn-no:hover {
+    background-color: red;
+    color: #fff;
+    font-weight: 600;
+
+}
+
+.element-column {
+    display: flex;
+    flex-direction: column;
+}
+
 
 footer {
+    padding: 40px 0;
     text-align: center;
-}
-
-footer h1 {
-    font-weight: 500;
+    font-weight: 600;
 }
