@@ -1,2 +1,2 @@
 # Rock-Paper-Scissors
-### Design with HTML, CSS and JS.
+### Designed with HTML, CSS and JS.
