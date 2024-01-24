@@ -41,11 +41,6 @@ h1 {
     color: #E5E5E5;
 }
 
-p {
-      
- 
-}
-
 .container-element-show {
     display: flex;
     justify-content: space-evenly;
@@ -180,7 +175,11 @@ footer {
     }
     h1 {
         font-size: 1.5rem;
+        padding: 20px 0;
     }
+    /* .container-header {
+        padding: 20px ;
+    } */
 
  }
 
