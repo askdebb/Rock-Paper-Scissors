@@ -93,6 +93,7 @@ h2 {
     background-color: #5cb45c;
     color: #E5E5E5;
 }
+
 #btn-no {
     margin-left: 30px;
     background-color: #a05656;
@@ -180,6 +181,10 @@ footer {
     /* .container-header {
         padding: 20px ;
     } */
+
+    #btn-yes {
+        margin-left: 0;
+    }
 
  }
 
