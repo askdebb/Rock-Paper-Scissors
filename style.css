@@ -25,7 +25,7 @@ body {
 }
 
 h1 {
-    background-color: #ffff73;
+    background-color: #ebeb09e3;
     padding: 10px 20px;
     text-align: center;
     font-size: 4rem;
@@ -34,7 +34,7 @@ h1 {
 }
 
 #p-red {
-    background-color: red;
+    background-color: rgb(51, 85, 196);
     text-align: center;
     padding: 5px 0;
     font-size: 0.8rem;
@@ -42,12 +42,8 @@ h1 {
 }
 
 p {
-    /* background-color: red; */
-    text-align: center;
-    padding: 10px 0;
-    font-size: 2rem;
-    color: #3A3A3A;
-    font-weight: 600;
+      
+ 
 }
 
 .container-element-show {
@@ -55,16 +51,18 @@ p {
     justify-content: space-evenly;
     align-items: center;
     background-color: #C9C9C9;
-    padding: 2rem 0 ;
+    padding: 1rem 0 ;
 }
 
 img {
-    width: 100px;
-    height: 90px;
+    width: 50%;
+    height: 50%;
 }
 
 #desc-element {
+    color: #3A3A3A;
     font-size: 1rem;
+    text-align: start;
 }
 
 
@@ -93,7 +91,7 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     border: none;
-    transition: 0.4s ease;
+    transition: 0.3s ease;
 }
 #btn-yes {
     margin-left: -60px;
@@ -102,12 +100,12 @@ h2 {
 }
 #btn-no {
     margin-left: 30px;
-    background-color: #c04f4f;
+    background-color: #a05656;
     color: #E5E5E5;
 }
 
 #btn-yes:hover {
-    background-color: green;
+    background-color: #088f08;
     color: #fff;
     font-weight: 600;
    
@@ -124,14 +122,28 @@ h2 {
 .element-column {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 
 footer {
     padding: 40px 0;
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
     background-color: #C9C9C9;
+}
+
+#bolt {
+    color: rgb(236, 174, 16);
+    text-shadow: 0.5px 0.5px 0.5px ;
+}
+
+#company-name {
+    text-decoration: none;
+    cursor: pointer;
+}
+#company-name:hover {
+    font-weight: 800;
 }
 
 /* media query */
@@ -154,7 +166,7 @@ footer {
         width: 90%;
     }
     h1 {
-        font-size: 2rem;
+        font-size: 3rem;
     }
  }
 
