@@ -125,6 +125,10 @@ h2 {
     align-items: center;
 }
 
+em {
+    padding: 2rem 5rem;
+}
+
 
 footer {
     padding: 40px 0;
