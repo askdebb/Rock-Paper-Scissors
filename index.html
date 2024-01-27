@@ -36,9 +36,34 @@
                 <button id="btn-no" class="btn">No</button>
             </div>
         </div>
-        <div class="container-input-interactions"> <em>waiting for the challenger...</em></div>
+        <div class="container-input-interactions">
+             <em id="em">waiting for the challenger...</em>
+             <div class="yes-info">
+                <div class="nameUser">
+                    <label for="user-name">Your name</label>
+                    <input type="text" id="username" placeholder="Enter name here">
+                </div>
+                <div class="genderUser">
+                    <label for="user-gender"> Choose gender</label>
+                    <select name="user-gender" id="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="levelUser">
+                    <label for="user-level">Choose Level</label>
+                    <select name="user-level" id="level">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>               
+                <button type="button" id="submit-user-info"> Begin!</button>
+             </div>
+            </div>
         <footer ><a id="company-name" href="https://web.facebook.com/cwdebrah">code<span id="bolt">BOLT</span> Studio</a>  |  Made with ⚡  |  ©️ 2024</footer>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
 </body>
 </html>

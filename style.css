@@ -94,6 +94,51 @@ h2 {
     color: #E5E5E5;
 }
 
+.yes-info {
+    display: none;
+}
+
+label {
+    font-size: 15px;
+}
+
+#username {
+    padding: 3px 10px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.nameUser label {
+    margin-right: 65px;
+}
+
+.genderUser label{
+    margin-right: 30px;
+}
+
+.levelUser label  {
+    margin-right: 48px;
+}
+
+.genderUser #gender, .levelUser #level {
+    padding: 3px 10px;
+}
+
+.nameUser, .genderUser {
+    margin-bottom: 10px;
+}
+
+
+
+.yes-info button {
+    margin-top: 0.5rem;
+    color: #fff;
+    background-color: #5cb45c;
+    cursor: pointer;
+}
+
 #btn-no {
     margin-left: 30px;
     background-color: #a05656;
@@ -106,6 +151,13 @@ h2 {
     font-weight: 600;
    
 }
+
+.yes-info button:hover {
+    color: #fff;
+    background-color: #088f08;
+    font-weight: 600;
+}
+
 
 
 #btn-no:hover {
