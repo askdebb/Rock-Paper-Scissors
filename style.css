@@ -234,11 +234,18 @@ footer {
     }
 
     .levelUser #level {
-        margin-left: -2px;
+        margin-left: -10px;
+    }
+    .genderUser #gender {
+        margin-left: -10px;
     }
 
     .yes-info {
         padding: 10px 15px;
+    }
+
+    .nameUser label {
+        margin-right: 55px;
     }
  }
 
