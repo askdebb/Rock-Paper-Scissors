@@ -13,6 +13,7 @@ const btnClicked = $('.btn').click(function (e){
         yesInfo.style.display = "flex";
         yesInfo.style.flexDirection = "column"; 
         yesInfo.style.justifyContent = "space-between"; 
+        yesInfo.style.transition =  "all 0.4s";
         containerInputInteractions.style.backgroundColor = '#E5E5E5';
         newDiv.appendChild(yesInfo);
         containerInputInteractions.appendChild(newDiv);

@@ -236,6 +236,10 @@ footer {
     .levelUser #level {
         margin-left: -2px;
     }
+
+    .yes-info {
+        padding: 10px 15px;
+    }
  }
 
 
