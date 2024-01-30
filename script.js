@@ -7,42 +7,47 @@ const userGender = document.getElementById('gender');
 const userLevel = document.getElementById('level');
 const yesBtn = document.getElementById('submit-user-info');
 
-// console.log("yes button id: "+btnAgreeYes.id);
+
 let userInfoChallenge = [];
+userName.addEventListener('click', function () {
+    changeNoBtnToClear();
+})
+
+userGender.addEventListener('click', function() {
+    changeBackToNo();
+})
+userLevel.addEventListener('click', function() {
+    changeBackToNo();
+})
 
 userName.addEventListener("keyup", function() {
     this.value = this.value.replace(/[^a-zA-Z ]+/,'');
+    
 })
 
 const containerInputInteractions = document.querySelector('.container-input-interactions');
 
 const btnClicked = $('.btn').click(function (e){
-    // console.log(e.target.innerText);
     let btnID = e.target.id;
-    // console.log("btn id: "+btnID);
     if(btnID === btnAgreeYes.id) {
         btnReturnToFillForm();
-        changeNoBtnToClear();
-        // console.log("yes pressed");
     }
     else if (e.target.innerText === "Clear"){
         userName.value = "";
         userGender.value = "Male";
         userLevel.value = "beginner";
+        userInfoChallenge = [];
             setTimeout(function(){
-                btnAgreeNo.innerText = "No";
-                btnAgreeNo.style.backgroundColor = "#a05656";
+                changeBackToNo();
         }, 200);
-        // console.log(userInfoChallenge);
     }
     else {
             document.querySelector('.container-input-interactions').innerHTML = " ";
             btnAgreeYes.style.visibility = "hidden";
 
             btnAgreeNo.addEventListener('mouseover', function() {
-                this.style.backgroundColor = 'red';
-                this.style.fontWeight = '600';
-                // btnAgreeNo.style.transition = '0.3s ease-in-out';
+                this.innerText = "No";
+                this.style.backgroundColor = "#a05656";
             })
             
             noBtnDetails();
@@ -50,11 +55,13 @@ const btnClicked = $('.btn').click(function (e){
             setTimeout(function(){
                 btnAgreeYes.style.visibility = "visible";
             },9000);
-            // console.log("User to play data is: ");
-            // console.log(userInfoChallenge);
         }    
 });
 
+function changeBackToNo(){
+    btnAgreeNo.innerText = "No";
+    btnAgreeNo.style.backgroundColor = "#a05656";
+}
 
 function changeNoBtnToClear() {
     btnAgreeNo.innerText = "Clear";
@@ -94,16 +101,10 @@ yesBtn.addEventListener("click", function() {
    const userGenderReal = userGender.value;
    const userLevelReal = userLevel.value;
 
-   console.log("first letter: "+userNameReal[0]);
-   console.log("type of first letter: "+ typeof(userNameReal[0]));
    switch (userNameReal) {
     case '':
-       feedBackInfo("No username");
+       feedBackInfo("No name entered");
         break;
-    case typeof(userNameReal[0]) == 'number':
-        feedBackInfo("Do not Start with a Number");
-        break;
-   
     default:
         userInfoChallenge.push({
             Username: userNameReal,
@@ -113,7 +114,6 @@ yesBtn.addEventListener("click", function() {
         break;
    }
    console.log(userInfoChallenge);
-
 });
 
 function btnReturnToFillForm() {
@@ -152,7 +152,6 @@ function feedBackInfo(infoHere){
 
     newBtn.onclick = btnReturnToFillForm;
     newSpanElement.appendChild(newBtn);
-    // yesInfo.appendChild(newSpanElement);
     containerInputInteractions.appendChild(newSpanElement);
 
 }
