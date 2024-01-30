@@ -211,6 +211,24 @@ footer {
     font-weight: 800;
 }
 
+/* beginner challenge */
+.container-user-info {
+    display: none;
+    padding: 1rem 0 ;
+}
+
+
+.container-score {
+    display: none;
+    /* justify-content: space-around;
+    align-items: center; */
+    padding: 1rem 0;
+    background-color: #d6d4d4;
+}
+
+
+
+
 /* media query */
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) { 

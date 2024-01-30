@@ -27,6 +27,21 @@
                 <img src="./images/scissors.png" alt="scissors">
                 <p id="desc-element">Scissors</p>
             </div>
+
+            <div class="container-user-info">
+                <div class="user">
+                    <p>Name:  <span id="challenge-user"></span></p>
+                    <p>Type: Human </p>
+                    <p>Gender: <span id="challenge-gender"></span> </p>
+                    <p>Level: <span id="challenge-level"></span></p>
+                </div>
+                <div class="cpu">
+                    <p>Name: Mary Asare</p>
+                    <p>Type: CPU</p>
+                    <p>Gender: Female </p>
+                    <p>Level: Beginner</p>
+                </div>
+            </div>
         </div>
         
         <div class="container-brave">
@@ -35,9 +50,19 @@
                 <button id="btn-yes" class="btn">Yes</button>
                 <button id="btn-no" class="btn noBtn">No</button>
             </div>
+            <div class="container-score">
+                <div class="user-score">
+                    <p>Score: <span id="userScore">0</span></p>
+                </div>
+                <div class="round-count">Round <span>1</span> of 3</div>
+                <div class="cpu-score">
+                    <p>Score: <span id="cpuScore">0</span></p>
+                </div>
+            </div>
         </div>
         <div class="container-input-interactions">
              <em id="em">waiting for the challenger...</em>
+           
              <div class="yes-info">
                 <div class="nameUser">
                     <label for="user-name">Your name</label>
@@ -53,12 +78,12 @@
                 <div class="levelUser">
                     <label for="user-level">Choose Level</label>
                     <select name="user-level" id="level">
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
                     </select>
                 </div>               
-                <button type="button" id="submit-user-info"> Begin!</button>
+                <button type="button" id="submit-user-info" > Begin!</button>
              </div>
             </div>
         <footer ><a id="company-name" href="https://web.facebook.com/cwdebrah">code<span id="bolt">BOLT</span> Studio</a>  |  Made with ⚡  |  ©️ 2024</footer>

@@ -7,11 +7,17 @@ const userGender = document.getElementById('gender');
 const userLevel = document.getElementById('level');
 const yesBtn = document.getElementById('submit-user-info');
 
+let challengeUser = document.getElementById('challenge-user');
+let challengeGender = document.getElementById('challenge-gender');
+let challengeLevel = document.getElementById('challenge-level');
 
-let userInfoChallenge = [];
-userName.addEventListener('click', function () {
-    changeNoBtnToClear();
-})
+const containerBrave = document.querySelector('.container-brave');
+const containerElementShow = document.querySelector('.container-element-show');
+const containerScore = document.querySelector('.container-score');
+
+
+const userInfoChallenge = [];
+
 
 userGender.addEventListener('click', function() {
     changeBackToNo();
@@ -25,6 +31,10 @@ userName.addEventListener("keyup", function() {
     
 })
 
+userName.addEventListener('focus', function () {
+    changeNoBtnToClear();
+})
+
 const containerInputInteractions = document.querySelector('.container-input-interactions');
 
 const btnClicked = $('.btn').click(function (e){
@@ -35,7 +45,7 @@ const btnClicked = $('.btn').click(function (e){
     else if (e.target.innerText === "Clear"){
         userName.value = "";
         userGender.value = "Male";
-        userLevel.value = "beginner";
+        userLevel.value = "Beginner";
         userInfoChallenge = [];
             setTimeout(function(){
                 changeBackToNo();
@@ -82,7 +92,7 @@ function noBtnDetails (){
     
 function soundControl(){
         setTimeout(function (){
-            emElement.innerText = "Scared of me? Hahahaa!!   RUN!!!!!.......      🏃🏿🏃🏿🏃🏿🏃🏿🏃🏿🏃🏿🏃🏿🏃🏿";
+            emElement.innerText = "Scared of me? Hahahaa!!   RUN!!!!!.......  🏃🏿🏃🏿🏃🏿";
             soundPlay();
         }, 1000);
         setTimeout(function (){
@@ -96,7 +106,21 @@ function soundPlay(){
     lafter.play();
 }
 
+const containerUserInfo = document.querySelector('.container-user-info');
+console.log(containerUserInfo);
 yesBtn.addEventListener("click", function() {
+    document.querySelector('.container-element-show').innerHTML = " ";
+    document.querySelector('.container-brave').innerHTML = " ";
+
+    containerUserInfo.style.display = 'flex';
+    containerScore.style.display = 'flex';
+
+    containerUserInfo.style.justifyContent = 'space-around';
+    containerScore.style.justifyContent = 'space-around';
+
+    containerElementShow.style.display = 'block';
+    containerBrave.style.display = 'block';
+ 
    const userNameReal = userName.value;
    const userGenderReal = userGender.value;
    const userLevelReal = userLevel.value;
@@ -111,10 +135,18 @@ yesBtn.addEventListener("click", function() {
             Gender: userGenderReal,
             Level: userLevelReal
            })
+           containerBrave.appendChild(containerScore);
+           containerElementShow.appendChild(containerUserInfo);
         break;
    }
    console.log(userInfoChallenge);
+   userInfoChallenge.forEach((itemOFUserInfo) => {
+    if(itemOFUserInfo.Level === "Beginner"){
+        beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
+    }
+   })
 });
+
 
 function btnReturnToFillForm() {
     document.querySelector('.container-input-interactions').innerHTML = " ";
@@ -153,6 +185,11 @@ function feedBackInfo(infoHere){
     newBtn.onclick = btnReturnToFillForm;
     newSpanElement.appendChild(newBtn);
     containerInputInteractions.appendChild(newSpanElement);
-
 }
 
+function beginnerChallenge (username, usergender, userlevel){
+   
+    challengeUser.innerHTML = username;
+    challengeGender.innerHTML = usergender;
+    challengeLevel.innerHTML = userlevel;
+}
