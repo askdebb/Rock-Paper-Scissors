@@ -49,6 +49,10 @@ h1 {
     padding: 1rem 0 ;
 }
 
+p{
+    font-size: 0.9em;
+}
+
 img {
     width: 50%;
     height: 50%;
@@ -222,9 +226,15 @@ footer {
     display: none;
     /* justify-content: space-around;
     align-items: center; */
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
     background-color: #d6d4d4;
 }
+.game-start-section {
+    display: none;
+   
+}
+
+
 
 
 

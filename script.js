@@ -15,8 +15,13 @@ const containerBrave = document.querySelector('.container-brave');
 const containerElementShow = document.querySelector('.container-element-show');
 const containerScore = document.querySelector('.container-score');
 
+const containerInputInteractions = document.querySelector('.container-input-interactions');
+const containerUserInfo = document.querySelector('.container-user-info');
 
-const userInfoChallenge = [];
+const gameStartSection = document.querySelector('.game-start-section');
+const gameStart = document.querySelector('.game-start');
+
+let userInfoChallenge = [];
 
 
 userGender.addEventListener('click', function() {
@@ -35,7 +40,7 @@ userName.addEventListener('focus', function () {
     changeNoBtnToClear();
 })
 
-const containerInputInteractions = document.querySelector('.container-input-interactions');
+
 
 const btnClicked = $('.btn').click(function (e){
     let btnID = e.target.id;
@@ -106,22 +111,13 @@ function soundPlay(){
     lafter.play();
 }
 
-const containerUserInfo = document.querySelector('.container-user-info');
-console.log(containerUserInfo);
+
+// console.log(containerUserInfo);
 yesBtn.addEventListener("click", function() {
-    document.querySelector('.container-element-show').innerHTML = " ";
-    document.querySelector('.container-brave').innerHTML = " ";
-
-    containerUserInfo.style.display = 'flex';
-    containerScore.style.display = 'flex';
-
-    containerUserInfo.style.justifyContent = 'space-around';
-    containerScore.style.justifyContent = 'space-around';
-
-    containerElementShow.style.display = 'block';
-    containerBrave.style.display = 'block';
+    
  
-   const userNameReal = userName.value;
+   let userNameReal = userName.value;
+   userNameReal = userNameReal.slice(0,1).toUpperCase() + userNameReal.slice(1,userNameReal.length).toLowerCase();
    const userGenderReal = userGender.value;
    const userLevelReal = userLevel.value;
 
@@ -135,13 +131,49 @@ yesBtn.addEventListener("click", function() {
             Gender: userGenderReal,
             Level: userLevelReal
            })
-           containerBrave.appendChild(containerScore);
-           containerElementShow.appendChild(containerUserInfo);
+            document.querySelector('.container-element-show').innerHTML = " ";
+            document.querySelector('.container-brave').innerHTML = " ";
+            containerInputInteractions.innerHTML = "Loading game session..."
+
+
+
+            containerUserInfo.style.display = 'flex';
+            containerScore.style.display = 'flex';
+
+            
+
+            containerUserInfo.style.justifyContent = 'space-around';
+            containerScore.style.justifyContent = 'space-around';
+
+            containerElementShow.style.display = 'block';
+            containerBrave.style.display = 'block';
+            containerBrave.style.padding = '0.5rem 0';
+
+           
+
+            containerBrave.appendChild(containerScore);
+            containerElementShow.appendChild(containerUserInfo);
+
+            // setTimeout(function () {
+            //     containerInputInteractions.innerHTML = "Loading game session..."
+            // },5000);
+
+            setTimeout(function (){
+                document.querySelector('.container-input-interactions').innerHTML = " ";
+
+                gameStartSection.style.display = 'block';
+                gameStart.style.display = 'flex';
+                gameStart.style.justifyContent = 'space-between';
+                gameStart.style.alignItems = 'center';
+                containerInputInteractions.appendChild(gameStartSection);
+
+            }, 2000);
+            
         break;
    }
    console.log(userInfoChallenge);
    userInfoChallenge.forEach((itemOFUserInfo) => {
-    if(itemOFUserInfo.Level === "Beginner"){
+    if(itemOFUserInfo.Level === "Beginner" && itemOFUserInfo.Username !== ""){
         beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
     }
    })
@@ -189,7 +221,19 @@ function feedBackInfo(infoHere){
 
 function beginnerChallenge (username, usergender, userlevel){
    
-    challengeUser.innerHTML = username;
-    challengeGender.innerHTML = usergender;
-    challengeLevel.innerHTML = userlevel;
+    const emUser = document.createElement('em');
+    emUser.innerText = username;
+    emUser.style.fontWeight = '600';
+    challengeUser.appendChild(emUser);
+    
+    const emGender = document.createElement('em');
+    emGender.innerText = usergender;
+    emGender.style.fontWeight = '600';
+    challengeGender.appendChild(emGender);
+
+
+    const emLevel = document.createElement('em');
+    emLevel.innerText = userlevel;
+    emLevel.style.fontWeight = '600';
+    challengeLevel.appendChild(emLevel);
 }

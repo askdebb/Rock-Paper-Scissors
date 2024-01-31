@@ -30,10 +30,10 @@
 
             <div class="container-user-info">
                 <div class="user">
-                    <p>Name:  <span id="challenge-user"></span></p>
-                    <p>Type: Human </p>
-                    <p>Gender: <span id="challenge-gender"></span> </p>
-                    <p>Level: <span id="challenge-level"></span></p>
+                    <p>Name:   <span id="challenge-user"></span></p>
+                    <p>Type: <em> <b>Human</b> </em></p>
+                    <p>Gender:  <span id="challenge-gender"></span> </p>
+                    <p>Level:  <span id="challenge-level"></span></p>
                 </div>
                 <div class="cpu">
                     <p>Name: Mary Asare</p>
@@ -52,17 +52,35 @@
             </div>
             <div class="container-score">
                 <div class="user-score">
-                    <p>Score: <span id="userScore">0</span></p>
+                    <p>Score: <span id="userScore"><em>0</em></span></p>
                 </div>
-                <div class="round-count">Round <span>1</span> of 3</div>
+                <div class="round-count"><p>Round <span><em>1</em></span> of <em>3</em></p></div>
                 <div class="cpu-score">
-                    <p>Score: <span id="cpuScore">0</span></p>
+                    <p>Score: <span id="cpuScore"><em>0</em></span></p>
                 </div>
             </div>
         </div>
         <div class="container-input-interactions">
              <em id="em">waiting for the challenger...</em>
-           
+             <div class="game-start-section">
+                <div class="game-start">
+                    <div class="user-side">
+                        <label for="" id="user-label-description">User Ready to select element </label>
+                        <div class="element-user-dropdown">
+                            <select name="" id="user-select-element">
+                                <option value="">Choose ...</option>
+                                <option value="">Rock</option>
+                                <option value="">Paper</option>
+                                <option value="">Scissors</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="cpu-side">
+                        cpu is processing
+                    </div>
+                </div>
+            </div>
+
              <div class="yes-info">
                 <div class="nameUser">
                     <label for="user-name">Your name</label>
