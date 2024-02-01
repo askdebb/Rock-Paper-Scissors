@@ -168,7 +168,7 @@ function gameSectionStartBeginner(){
     setTimeout(function (){
         document.querySelector('.container-input-interactions').innerHTML = " ";
         containerInputInteractions.style.width= '100%';
-        containerInputInteractions.style.height= '50%';
+        containerInputInteractions.style.height= '40%';
 
         
         gameStartSection.style.display = 'block';
