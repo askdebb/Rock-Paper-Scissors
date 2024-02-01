@@ -22,6 +22,7 @@ const gameStartSection = document.querySelector('.game-start-section');
 const gameStart = document.querySelector('.game-start');
 
 let userInfoChallenge = [];
+const rpsContainer = ["rock", "paper", "scissors"];
 
 
 userGender.addEventListener('click', function() {
@@ -131,44 +132,8 @@ yesBtn.addEventListener("click", function() {
             Gender: userGenderReal,
             Level: userLevelReal
            })
-            document.querySelector('.container-element-show').innerHTML = " ";
-            document.querySelector('.container-brave').innerHTML = " ";
-            containerInputInteractions.innerHTML = "Loading game session..."
 
-
-
-            containerUserInfo.style.display = 'flex';
-            containerScore.style.display = 'flex';
-
-            
-
-            containerUserInfo.style.justifyContent = 'space-around';
-            containerScore.style.justifyContent = 'space-around';
-
-            containerElementShow.style.display = 'block';
-            containerBrave.style.display = 'block';
-            containerBrave.style.padding = '0.5rem 0';
-
-           
-
-            containerBrave.appendChild(containerScore);
-            containerElementShow.appendChild(containerUserInfo);
-
-            // setTimeout(function () {
-            //     containerInputInteractions.innerHTML = "Loading game session..."
-            // },5000);
-
-            setTimeout(function (){
-                document.querySelector('.container-input-interactions').innerHTML = " ";
-
-                gameStartSection.style.display = 'block';
-                gameStart.style.display = 'flex';
-                gameStart.style.justifyContent = 'space-between';
-                gameStart.style.alignItems = 'center';
-                containerInputInteractions.appendChild(gameStartSection);
-
-            }, 2000);
-            
+           gameSectionStartBeginner(); 
         break;
    }
    console.log(userInfoChallenge);
@@ -179,6 +144,41 @@ yesBtn.addEventListener("click", function() {
    })
 });
 
+function gameSectionStartBeginner(){
+    document.querySelector('.container-element-show').innerHTML = " ";
+    document.querySelector('.container-brave').innerHTML = " ";
+    containerInputInteractions.style.width= '200px';
+    containerInputInteractions.style.height= '50px';
+    containerInputInteractions.innerHTML = "<img src = './images/loading.gif'/>";
+
+
+    containerUserInfo.style.display = 'flex';
+    containerScore.style.display = 'flex';
+
+    containerUserInfo.style.justifyContent = 'space-around';
+    containerScore.style.justifyContent = 'space-around';
+
+    containerElementShow.style.display = 'block';
+    containerBrave.style.display = 'block';
+    containerBrave.style.padding = '0.5rem 0';
+   
+    containerBrave.appendChild(containerScore);
+    containerElementShow.appendChild(containerUserInfo);
+
+    setTimeout(function (){
+        document.querySelector('.container-input-interactions').innerHTML = " ";
+        containerInputInteractions.style.width= '100%';
+        containerInputInteractions.style.height= '100%';
+
+        
+        gameStartSection.style.display = 'block';
+        gameStart.style.display = 'flex';
+        gameStart.style.justifyContent = 'space-around';
+        gameStart.style.alignItems = 'center';
+        containerInputInteractions.appendChild(gameStartSection);
+
+    }, 1000);
+}
 
 function btnReturnToFillForm() {
     document.querySelector('.container-input-interactions').innerHTML = " ";

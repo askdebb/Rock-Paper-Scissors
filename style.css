@@ -230,8 +230,31 @@ footer {
     background-color: #d6d4d4;
 }
 .game-start-section {
-    display: none;
-   
+    display: none;  
+}
+.user-side {
+    display: flex;
+    flex-direction: column;
+}
+#user-label-description {
+    margin-bottom: 5px;
+}
+
+#btn-go {
+    width: 70%;
+    margin-top: 10px;
+    background-color: #5cb45c;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 3px;
+}
+
+#btn-go:hover {
+    font-weight: 600;
+    background-color: #088f08;
+    transition: 0.3s ease;
 }
 
 
