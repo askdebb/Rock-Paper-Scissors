@@ -127,7 +127,9 @@ label {
     margin-right: 48px;
 }
 
-.genderUser #gender, .levelUser #level {
+.genderUser #gender,
+ .levelUser #level,
+ .element-user-dropdown #user-select-element {
     padding: 3px 10px;
 }
 
@@ -232,15 +234,31 @@ footer {
 .game-start-section {
     display: none;  
 }
+
+.game-start {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 .user-side {
     display: flex;
     flex-direction: column;
+    width: 30%;
 }
+
+/* .show-user-side {
+    display: none;
+} */
+
 #user-label-description {
     margin-bottom: 5px;
 }
 
-#btn-go {
+#btn-go-back {
+    display: none;
+}
+
+#btn-go, #btn-go-back {
     width: 70%;
     margin-top: 10px;
     background-color: #5cb45c;
@@ -251,12 +269,11 @@ footer {
     padding: 5px 3px;
 }
 
-#btn-go:hover {
+#btn-go:hover, #btn-go-back:hover {
     font-weight: 600;
     background-color: #088f08;
     transition: 0.3s ease;
 }
-
 
 
 

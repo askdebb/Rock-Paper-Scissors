@@ -21,6 +21,12 @@ const containerUserInfo = document.querySelector('.container-user-info');
 const gameStartSection = document.querySelector('.game-start-section');
 const gameStart = document.querySelector('.game-start');
 
+const btnGo = document.getElementById('btn-go');
+const userSelectElement = document.getElementById('user-select-element');
+const userSide = document.querySelector('.user-side');
+const btnGoBack = document.getElementById('btn-go-back');
+const showUserSide = document.querySelector('.show-user-side');
+
 let userInfoChallenge = [];
 const rpsContainer = ["rock", "paper", "scissors"];
 
@@ -116,7 +122,6 @@ function soundPlay(){
 // console.log(containerUserInfo);
 yesBtn.addEventListener("click", function() {
     
- 
    let userNameReal = userName.value;
    userNameReal = userNameReal.slice(0,1).toUpperCase() + userNameReal.slice(1,userNameReal.length).toLowerCase();
    const userGenderReal = userGender.value;
@@ -151,7 +156,6 @@ function gameSectionStartBeginner(){
     containerInputInteractions.style.height= '50px';
     containerInputInteractions.innerHTML = "<img src = './images/loading.gif'/>";
 
-
     containerUserInfo.style.display = 'flex';
     containerScore.style.display = 'flex';
 
@@ -170,13 +174,11 @@ function gameSectionStartBeginner(){
         containerInputInteractions.style.width= '100%';
         containerInputInteractions.style.height= '40%';
 
-        
         gameStartSection.style.display = 'block';
         gameStart.style.display = 'flex';
         gameStart.style.justifyContent = 'space-around';
         gameStart.style.alignItems = 'center';
         containerInputInteractions.appendChild(gameStartSection);
-
     }, 1000);
 }
 
@@ -231,9 +233,30 @@ function beginnerChallenge (username, usergender, userlevel){
     emGender.style.fontWeight = '600';
     challengeGender.appendChild(emGender);
 
-
     const emLevel = document.createElement('em');
     emLevel.innerText = userlevel;
     emLevel.style.fontWeight = '600';
     challengeLevel.appendChild(emLevel);
 }
+
+btnGo.addEventListener('click', function() {
+    
+    if(userSelectElement.value === ""){
+        // console.log(userSide);
+        userSide.innerHTML = "";
+        btnGoBack.style.display = "block";
+        userSide.appendChild(btnGoBack);
+        console.log("empty");
+
+    }
+    else {
+        console.log(userSelectElement.value);
+    }
+
+});
+
+btnGoBack.addEventListener('click', function() {
+    userSide.style.display = 'flex';
+    console.log("btn go back");
+    
+});
