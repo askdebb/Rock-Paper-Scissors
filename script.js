@@ -266,5 +266,7 @@ btnGoBackDiv.addEventListener('click', function() {
     userSideLeft.style.flexDirection = 'column';
     btnGo.style.width = '82%';
     btnGoBackDiv.style.display = "none";
+    cpuSideRender.style.marginRight = "100px";
+
     
 });
