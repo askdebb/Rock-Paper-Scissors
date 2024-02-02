@@ -26,6 +26,7 @@ const userSelectElement = document.getElementById('user-select-element');
 const userSide = document.querySelector('.user-side');
 const btnGoBackDiv = document.querySelector('.redo-btn');
 const showUserSide = document.querySelector('.show-user-side');
+const cpuSideRender = document.querySelector('.cpu-side');
 
 let userInfoChallenge = [];
 const rpsContainer = ["rock", "paper", "scissors"];
@@ -174,7 +175,7 @@ function gameSectionStartBeginner(){
         containerInputInteractions.style.height= '20vh';
 
         gameStartSection.style.display = 'flex';
-        gameStartSection.style.justifyContent = 'end';
+        // gameStartSection.style.justifyContent = 'end';
         // gameStartSection.style.justifyContent = 'space-between';
         // gameStartSection.style.alignItems = 'center';
         gameStart.style.display = 'flex';
@@ -248,6 +249,7 @@ btnGo.addEventListener('click', function() {
         containerInputInteractions.style.height= '7vh';
         userSide.style.display = 'none';
         btnGoBackDiv.style.display = "block";
+        cpuSideRender.style.marginLeft = "100px";
         // btnGoBackDiv.style.paddingBottom = "30px";
         console.log("empty");
 
