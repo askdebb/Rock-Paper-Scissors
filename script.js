@@ -24,7 +24,7 @@ const gameStart = document.querySelector('.game-start');
 const btnGo = document.getElementById('btn-go');
 const userSelectElement = document.getElementById('user-select-element');
 const userSide = document.querySelector('.user-side');
-const btnGoBack = document.getElementById('btn-go-back');
+const btnGoBackDiv = document.querySelector('.redo-btn');
 const showUserSide = document.querySelector('.show-user-side');
 
 let userInfoChallenge = [];
@@ -137,7 +137,6 @@ yesBtn.addEventListener("click", function() {
             Gender: userGenderReal,
             Level: userLevelReal
            })
-
            gameSectionStartBeginner(); 
         break;
    }
@@ -172,12 +171,16 @@ function gameSectionStartBeginner(){
     setTimeout(function (){
         document.querySelector('.container-input-interactions').innerHTML = " ";
         containerInputInteractions.style.width= '100%';
-        containerInputInteractions.style.height= '40%';
+        containerInputInteractions.style.height= '20vh';
 
-        gameStartSection.style.display = 'block';
+        gameStartSection.style.display = 'flex';
+        gameStartSection.style.justifyContent = 'end';
+        // gameStartSection.style.justifyContent = 'space-between';
+        // gameStartSection.style.alignItems = 'center';
         gameStart.style.display = 'flex';
-        gameStart.style.justifyContent = 'space-around';
+        gameStart.style.justifyContent = 'space-between';
         gameStart.style.alignItems = 'center';
+        gameStart.style.marginLeft = '10%';
         containerInputInteractions.appendChild(gameStartSection);
     }, 1000);
 }
@@ -242,10 +245,10 @@ function beginnerChallenge (username, usergender, userlevel){
 btnGo.addEventListener('click', function() {
     
     if(userSelectElement.value === ""){
-        // console.log(userSide);
-        userSide.innerHTML = "";
-        btnGoBack.style.display = "block";
-        userSide.appendChild(btnGoBack);
+        containerInputInteractions.style.height= '7vh';
+        userSide.style.display = 'none';
+        btnGoBackDiv.style.display = "block";
+        // btnGoBackDiv.style.paddingBottom = "30px";
         console.log("empty");
 
     }
@@ -255,8 +258,9 @@ btnGo.addEventListener('click', function() {
 
 });
 
-btnGoBack.addEventListener('click', function() {
+btnGoBackDiv.addEventListener('click', function() {
+    containerInputInteractions.style.height= '20vh';
     userSide.style.display = 'flex';
-    console.log("btn go back");
+    btnGoBackDiv.style.display = "none";
     
 });

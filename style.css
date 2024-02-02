@@ -235,28 +235,46 @@ footer {
     display: none;  
 }
 
+.redo-btn {
+    display: none;
+    width: 70%;
+    margin-bottom: 50px;
+}
+
+.element-user-dropdown #user-select-element {
+    padding: 0 36px;
+}
+
+
 .game-start {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    /* width: 50%; */
 }
+
 .user-side {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 70%;
 }
 
-/* .show-user-side {
-    display: none;
-} */
+.cpu-side{
+    padding: 20px 0;
+    height: 100%;
+}
+
+.cpu-side img {
+    width: 70%;
+}
 
 #user-label-description {
     margin-bottom: 5px;
 }
 
-#btn-go-back {
+/* #btn-go-back {
     display: none;
-}
+} */
 
 #btn-go, #btn-go-back {
     width: 70%;
