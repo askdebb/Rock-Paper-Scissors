@@ -27,6 +27,7 @@ const userSide = document.querySelector('.user-side');
 const btnGoBackDiv = document.querySelector('.redo-btn');
 const showUserSide = document.querySelector('.show-user-side');
 const cpuSideRender = document.querySelector('.cpu-side');
+const userSideLeft = document.querySelector('.user-side-left');
 
 let userInfoChallenge = [];
 const rpsContainer = ["rock", "paper", "scissors"];
@@ -247,12 +248,11 @@ btnGo.addEventListener('click', function() {
     
     if(userSelectElement.value === ""){
         containerInputInteractions.style.height= '7vh';
-        userSide.style.display = 'none';
+        userSideLeft.style.display = 'none';
         btnGoBackDiv.style.display = "block";
         cpuSideRender.style.marginLeft = "100px";
         // btnGoBackDiv.style.paddingBottom = "30px";
         console.log("empty");
-
     }
     else {
         console.log(userSelectElement.value);
@@ -262,7 +262,9 @@ btnGo.addEventListener('click', function() {
 
 btnGoBackDiv.addEventListener('click', function() {
     containerInputInteractions.style.height= '20vh';
-    userSide.style.display = 'flex';
+    userSideLeft.style.display = 'flex';
+    userSideLeft.style.flexDirection = 'column';
+    btnGo.style.width = '82%';
     btnGoBackDiv.style.display = "none";
     
 });
