@@ -28,6 +28,7 @@ const btnGoBackDiv = document.querySelector('.redo-btn');
 const showUserSide = document.querySelector('.show-user-side');
 const cpuSideRender = document.querySelector('.cpu-side');
 const userSideLeft = document.querySelector('.user-side-left');
+const userSideLeftImage = document.querySelector('.user-side-left-image');
 const processingBar = document.querySelector('.processing-bar');
 
 let userInfoChallenge = [];
@@ -191,6 +192,7 @@ function gameStartSectionRender(){
 
     userSide.style.width = '50%';
     userSide.style.padding = '10px 0';
+
     cpuSideRender.style.width = '50%';
     cpuSideRender.style.padding = '10px 0';
     
@@ -263,12 +265,11 @@ btnGo.addEventListener('click', function() {
         console.log("empty");
     }
     else {
-        // while(roundCount <= 3){
             gameStartsNow(userSelectElement.value);
             if(roundCount.innerText > 3){
                 processingBar.innerText = 'Game Over.';
             }
-        // } 
+      
         console.log(roundCount.innerText);
     }
 
@@ -292,11 +293,13 @@ console.log(roundCount.innerText);
 
 function gameStartsNow(userSelectValue) {
    
-    userSideLeft.innerHTML = "";
+    userSideLeft.style.display = 'none';
+    userSideLeftImage.style.display = 'inline';
+
     const imgUser = document.createElement('img');
     const userValue = "./images/" + userSelectValue + ".png";
     imgUser.src = userValue;
-    userSideLeft.appendChild(imgUser);
+    userSideLeftImage.appendChild(imgUser);
 
     const cpuElement = rpsContainer[Math.floor(Math.random() * 3)];
     const cpuSelect = "./images/" + cpuElement +".png";
@@ -320,44 +323,71 @@ function gameStartsNow(userSelectValue) {
         if((userSelectValue === 'rock' &&  cpuElement === 'rock') || (userSelectValue === 'paper' &&  cpuElement === 'paper') || (userSelectValue === 'scissors' &&  cpuElement === 'scissors')){
             processingBar.innerText = "Draw";
             processingBar.style.backgroundColor = "blue";
-            roundCount.innerText++;
+            setTimeout(function() {
+                reStageGameNextRound();
+            },2000);
         }
         else if(userSelectValue === 'rock' &&  cpuElement === 'paper'){
-            processingBar.innerText = "CPU Mary Asare wins!";
-            cpuScore.innerText++;
-            processingBar.style.backgroundColor = "gold";
+            cpuWinsEachRound();
         }
         else if(userSelectValue === 'paper' &&  cpuElement === 'scissors'){
-            processingBar.innerText = "CPU Mary Asare wins!";
-            cpuScore.innerText++;
-            processingBar.style.backgroundColor = "gold";
+            cpuWinsEachRound();
         }
         else if(userSelectValue === 'scissors' &&  cpuElement === 'rock'){
-            processingBar.innerText = "CPU Mary Asare wins!";
-            cpuScore.innerText++;
-            processingBar.style.backgroundColor = "gold";
+            cpuWinsEachRound();
         }
         else if(userSelectValue === 'paper' &&  cpuElement === 'rock'){
-            processingBar.innerText = "User wins!";
-            userScore.innerText++;
-            processingBar.style.backgroundColor = "green";
+            userWinsEachRound();
         }
         else if(userSelectValue === 'scissors' &&  cpuElement === 'paper'){
-            processingBar.innerText = "User wins!";
-            userScore.innerText++;
-            processingBar.style.backgroundColor = "green";
+            userWinsEachRound();
         }
         else if(userSelectValue === 'rock' &&  cpuElement === 'scissors'){
-            processingBar.innerText = "User wins!";
-            userScore.innerText++;
-            processingBar.style.backgroundColor = "green";
+            userWinsEachRound();
         }
 
     }, 5000);
-    gameSectionStartBeginner(); 
-    // gameStartSectionRender();
+     
+    
     
     console.log("cpu select: " + cpu);
     console.log("user select: "+userValue);
+}
+
+
+function userWinsEachRound(){
+    userInfoChallenge.forEach((userData) => {
+       const userNameData = userData.Username;
+       processingBar.innerText = userNameData + " wins!";
+    })
+    userScore.innerText++;
+    processingBar.style.backgroundColor = "green";
+    
+    setTimeout(function() {
+        reStageGameNextRound();
+    },2000);
+    
+
+}
+function cpuWinsEachRound(){
+    processingBar.innerText = "CPU Mary Asare wins!";
+    cpuScore.innerText++;
+    processingBar.style.backgroundColor = "#daa520";
+   
+    setTimeout(function() {
+        reStageGameNextRound()
+    },2000);
+}
+
+function reStageGameNextRound(){
+    userSideLeft.style.display = 'flex';
+    userSideLeftImage.innerHTML = " ";
+    userSideLeftImage.style.display = 'none';
+    gameStartSectionRender();
+    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
+    processingBar.style.display = 'none';
+    processingBar.innerText = 'processing winner';
+    processingBar.style.backgroundColor = 'red';
+    roundCount.innerText++;
 }
 

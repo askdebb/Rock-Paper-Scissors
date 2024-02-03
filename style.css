@@ -301,6 +301,10 @@ footer {
     transition: 0.3s ease;
 }
 
+.user-side-left-image {
+    display: none;
+}
+
 
 
 
