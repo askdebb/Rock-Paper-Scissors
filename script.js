@@ -154,7 +154,7 @@ function gameSectionStartBeginner(){
     document.querySelector('.container-element-show').innerHTML = " ";
     document.querySelector('.container-brave').innerHTML = " ";
     containerInputInteractions.style.width= '200px';
-    containerInputInteractions.style.height= '50px';
+    // containerInputInteractions.style.height= '50px';
     containerInputInteractions.innerHTML = "<img src = './images/loading.gif'/>";
 
     containerUserInfo.style.display = 'flex';
@@ -179,7 +179,7 @@ function gameSectionStartBeginner(){
 function gameStartSectionRender(){
     document.querySelector('.container-input-interactions').innerHTML = " ";
     containerInputInteractions.style.width= '100%';
-    containerInputInteractions.style.height= '10rem';
+    // containerInputInteractions.style.height= '10rem';
 
    
     gameStartSection.style.display = 'block';
@@ -259,12 +259,12 @@ function beginnerChallenge (username, usergender, userlevel){
 btnGo.addEventListener('click', function() {
     
     if(userSelectElement.value === ""){
-        containerInputInteractions.style.height= '7vh';
+        // containerInputInteractions.style.height= '7vh';
         userSideLeft.style.display = 'none';
         btnGoBackDiv.style.display = "block";
-        cpuSideRender.style.marginLeft = "50px";
+        // cpuSideRender.style.marginLeft = "50px";
         cpuSideRender.innerHTML = "<img src = './images/marry-runaway.png' />";
-        containerInputInteractions.style.height= '5rem';
+        // containerInputInteractions.style.height= '5rem';
 
         // btnGoBackDiv.style.paddingBottom = "30px";
         console.log("empty");
@@ -287,7 +287,7 @@ btnGoBackDiv.addEventListener('click', function() {
     // userSelectElement.style.padding = '0 20px';
     // btnGoBackDiv.style.display = "none";
     // cpuSideRender.style.marginRight = "100px";
-    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' />";
+    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />";
 
     
 });
