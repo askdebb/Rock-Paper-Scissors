@@ -183,6 +183,7 @@ function gameSectionStartBeginner(){
         gameStart.style.justifyContent = 'space-between';
         gameStart.style.alignItems = 'center';
         gameStart.style.marginLeft = '10%';
+        gameStart.style.marginRight = '10%';
         containerInputInteractions.appendChild(gameStartSection);
     }, 1000);
 }
@@ -251,6 +252,7 @@ btnGo.addEventListener('click', function() {
         userSideLeft.style.display = 'none';
         btnGoBackDiv.style.display = "block";
         cpuSideRender.style.marginLeft = "100px";
+        cpuSideRender.innerHTML = "<img src = './images/marry-runaway.png' />";
         // btnGoBackDiv.style.paddingBottom = "30px";
         console.log("empty");
     }
@@ -264,9 +266,12 @@ btnGoBackDiv.addEventListener('click', function() {
     containerInputInteractions.style.height= '20vh';
     userSideLeft.style.display = 'flex';
     userSideLeft.style.flexDirection = 'column';
-    btnGo.style.width = '82%';
+    btnGo.style.width = '50%';
+    userSelectElement.style.width = '50%';
     btnGoBackDiv.style.display = "none";
     cpuSideRender.style.marginRight = "100px";
+    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' />";
 
     
 });
+
