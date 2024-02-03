@@ -171,26 +171,32 @@ function gameSectionStartBeginner(){
     containerElementShow.appendChild(containerUserInfo);
 
     setTimeout(function (){
-        document.querySelector('.container-input-interactions').innerHTML = " ";
-        containerInputInteractions.style.width= '100%';
-        containerInputInteractions.style.height= '10rem';
-
-        gameStartSection.style.display = 'block';
-        gameStartSection.style.width = '90%';
-        gameStartSection.style.margin = '0 auto';
-
-        gameStart.style.display = 'flex';
-        gameStart.style.justifyContent = 'space-around';
-        gameStart.style.alignItems = 'center';
-
-        userSide.style.width = '50%';
-        userSide.style.padding = '10px 0';
-        cpuSideRender.style.width = '50%';
-        cpuSideRender.style.padding = '10px 0';
-       
-        
-        containerInputInteractions.appendChild(gameStartSection);
+        gameStartSectionRender();
+      
     }, 1000);
+}
+
+function gameStartSectionRender(){
+    document.querySelector('.container-input-interactions').innerHTML = " ";
+    containerInputInteractions.style.width= '100%';
+    containerInputInteractions.style.height= '10rem';
+
+   
+    gameStartSection.style.display = 'block';
+    gameStartSection.style.width = '90%';
+    gameStartSection.style.margin = '0 auto';
+
+    gameStart.style.display = 'flex';
+    gameStart.style.justifyContent = 'space-around';
+    gameStart.style.alignItems = 'center';
+
+    userSide.style.width = '50%';
+    userSide.style.padding = '10px 0';
+    cpuSideRender.style.width = '50%';
+    cpuSideRender.style.padding = '10px 0';
+   
+    
+    containerInputInteractions.appendChild(gameStartSection);
 }
 
 function btnReturnToFillForm() {
@@ -270,14 +276,17 @@ btnGo.addEventListener('click', function() {
 });
 
 btnGoBackDiv.addEventListener('click', function() {
-    containerInputInteractions.style.height= '10rem';
     userSideLeft.style.display = 'flex';
-    userSideLeft.style.flexDirection = 'column';
-    btnGo.style.width = '70%';
-    // userSelectElement.style.width = '50%';
-    userSelectElement.style.padding = '0 20px';
+    gameStartSectionRender();
     btnGoBackDiv.style.display = "none";
-    cpuSideRender.style.marginRight = "100px";
+    // containerInputInteractions.style.height= '10rem';
+    // userSideLeft.style.display = 'flex';
+    // userSideLeft.style.flexDirection = 'column';
+    // btnGo.style.width = '70%';
+
+    // userSelectElement.style.padding = '0 20px';
+    // btnGoBackDiv.style.display = "none";
+    // cpuSideRender.style.marginRight = "100px";
     cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' />";
 
     
