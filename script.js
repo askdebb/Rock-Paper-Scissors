@@ -173,9 +173,9 @@ function gameSectionStartBeginner(){
     setTimeout(function (){
         document.querySelector('.container-input-interactions').innerHTML = " ";
         containerInputInteractions.style.width= '100%';
-        containerInputInteractions.style.height= '20vh';
+        containerInputInteractions.style.height= '10rem';
 
-        gameStartSection.style.display = 'flex';
+        gameStartSection.style.display = 'block';
         // gameStartSection.style.justifyContent = 'end';
         // gameStartSection.style.justifyContent = 'space-between';
         // gameStartSection.style.alignItems = 'center';
@@ -253,6 +253,8 @@ btnGo.addEventListener('click', function() {
         btnGoBackDiv.style.display = "block";
         cpuSideRender.style.marginLeft = "50px";
         cpuSideRender.innerHTML = "<img src = './images/marry-runaway.png' />";
+        containerInputInteractions.style.height= '5rem';
+
         // btnGoBackDiv.style.paddingBottom = "30px";
         console.log("empty");
     }
@@ -263,11 +265,12 @@ btnGo.addEventListener('click', function() {
 });
 
 btnGoBackDiv.addEventListener('click', function() {
-    containerInputInteractions.style.height= '20vh';
+    containerInputInteractions.style.height= '10rem';
     userSideLeft.style.display = 'flex';
     userSideLeft.style.flexDirection = 'column';
-    btnGo.style.width = '50%';
-    userSelectElement.style.width = '50%';
+    btnGo.style.width = '70%';
+    // userSelectElement.style.width = '50%';
+    userSelectElement.style.padding = '0 4.5rem';
     btnGoBackDiv.style.display = "none";
     cpuSideRender.style.marginRight = "100px";
     cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' />";

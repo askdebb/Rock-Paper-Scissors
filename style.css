@@ -253,10 +253,10 @@ footer {
     /* width: 50%; */
 }
 
-.user-side {
+.user-side-left {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 50%;
 }
 
 .cpu-side{
