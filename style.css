@@ -238,11 +238,10 @@ footer {
 .redo-btn {
     display: none;
     width: 70%;
-    margin-bottom: 50px;
 }
 
 .element-user-dropdown #user-select-element {
-    padding: 0 4.5rem;
+    padding: 0 20px;
 }
 
 

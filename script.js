@@ -176,13 +176,18 @@ function gameSectionStartBeginner(){
         containerInputInteractions.style.height= '10rem';
 
         gameStartSection.style.display = 'block';
-        // gameStartSection.style.justifyContent = 'end';
-        // gameStartSection.style.justifyContent = 'space-between';
-        // gameStartSection.style.alignItems = 'center';
+        gameStartSection.style.width = '90%';
+        gameStartSection.style.margin = '0 auto';
+
         gameStart.style.display = 'flex';
-        gameStart.style.justifyContent = 'space-between';
+        gameStart.style.justifyContent = 'space-around';
         gameStart.style.alignItems = 'center';
-        gameStart.style.margin = '0 auto';
+
+        userSide.style.width = '50%';
+        userSide.style.padding = '10px 0';
+        cpuSideRender.style.width = '50%';
+        cpuSideRender.style.padding = '10px 0';
+       
         
         containerInputInteractions.appendChild(gameStartSection);
     }, 1000);
@@ -270,7 +275,7 @@ btnGoBackDiv.addEventListener('click', function() {
     userSideLeft.style.flexDirection = 'column';
     btnGo.style.width = '70%';
     // userSelectElement.style.width = '50%';
-    userSelectElement.style.padding = '0 4.5rem';
+    userSelectElement.style.padding = '0 20px';
     btnGoBackDiv.style.display = "none";
     cpuSideRender.style.marginRight = "100px";
     cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' />";
