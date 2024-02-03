@@ -265,12 +265,15 @@ btnGo.addEventListener('click', function() {
         console.log("empty");
     }
     else {
+        // if(gameRunner === 0){
+        //         roundCountMain.innerHTML = " ";
+        //         roundCountMain.innerText = "Winner is: Me"
+        // }
+        // else{
             gameStartsNow(userSelectElement.value);
-            if(roundCount.innerText > 3){
-                processingBar.innerText = 'Game Over.';
-            }
-      
-        console.log(roundCount.innerText);
+        // }
+            
+
     }
 
 });
@@ -286,13 +289,12 @@ btnGoBackDiv.addEventListener('click', function() {
 let userScore = document.getElementById('userScore');
 let cpuScore = document.getElementById('cpuScore');
 let roundCount = document.getElementById('round-count');
+let roundCountMain = document.querySelector('.round-count');
 
-console.log(userScore.innerText);
-console.log(cpuScore.innerText);
-console.log(roundCount.innerText);
+let gameRunner = 2;
 
 function gameStartsNow(userSelectValue) {
-   
+      
     userSideLeft.style.display = 'none';
     userSideLeftImage.style.display = 'inline';
 
@@ -362,32 +364,88 @@ function userWinsEachRound(){
     })
     userScore.innerText++;
     processingBar.style.backgroundColor = "green";
-    
-    setTimeout(function() {
-        reStageGameNextRound();
-    },2000);
-    
 
+        setTimeout(function() {
+            reStageGameNextRound();
+        },2000);
+   
 }
+
 function cpuWinsEachRound(){
     processingBar.innerText = "CPU Mary Asare wins!";
     cpuScore.innerText++;
     processingBar.style.backgroundColor = "#daa520";
+  
+        setTimeout(function() {
+            reStageGameNextRound();
+        },2000);
    
-    setTimeout(function() {
-        reStageGameNextRound()
-    },2000);
+    
 }
 
+const gameEnd = document.querySelector('.game-end');
 function reStageGameNextRound(){
-    userSideLeft.style.display = 'flex';
-    userSideLeftImage.innerHTML = " ";
-    userSideLeftImage.style.display = 'none';
-    gameStartSectionRender();
-    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
-    processingBar.style.display = 'none';
-    processingBar.innerText = 'processing winner';
-    processingBar.style.backgroundColor = 'red';
-    roundCount.innerText++;
+    if(gameRunner < 1){
+        roundCountMain.innerText = "Done";
+        gameStart.style.display = "none";
+        
+        if(userScore.innerText > cpuScore.innerText){
+            userInfoChallenge.forEach((userData) => {
+                const userNameData = userData.Username;
+                gameEnd.innerText = userNameData + " is the champion!";
+                gameEnd.style.backgroundColor = 'green';
+                gameEnd.style.textAlign = "center";
+                gameEnd.style.color = '#fff';
+                processingBar.style.display = "none";
+             })
+        } else if (userScore.innerText < cpuScore.innerText){
+            gameEnd.innerText = "CPU Mary Asare is the champion!";
+            gameEnd.style.backgroundColor = '#daa520';
+            gameEnd.style.textAlign = "center";
+            gameEnd.style.color = '#fff';
+            processingBar.style.display = "none";
+        }
+        else {
+            gameEnd.innerText = "A tie!";
+            gameEnd.style.backgroundColor = 'blue';
+            gameEnd.style.textAlign = "center";
+            gameEnd.style.color = '#fff';
+            processingBar.style.display = "none";
+        }
+
+        setTimeout(function(){
+            const btnRestart = document.createElement('button');
+            btnRestart.innerText = "Yes";
+            btnRestart.style.marginLeft = "5px";
+            btnRestart.style.backgroundColor = "#daa520";
+            btnRestart.style.color = "#fff";
+            btnRestart.style.padding = "5px 6px";
+            btnRestart.onclick = restartGame;
+
+            gameEnd.innerText = "Restart?";
+            gameEnd.appendChild(btnRestart);
+
+        },2000);
+
+    } else {
+        userSideLeft.style.display = 'flex';
+        userSideLeftImage.innerHTML = " ";
+        userSideLeftImage.style.display = 'none';
+        gameStartSectionRender();
+        cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
+        processingBar.style.display = 'none';
+        processingBar.innerText = 'processing winner';
+        processingBar.style.backgroundColor = 'red';
+        roundCount.innerText++;
+        gameRunner--;
+        console.log("game runner remains: "+gameRunner);
+    } 
 }
 
+console.log("now round: "+roundCount.innerText);
+console.log("game runner now: "+gameRunner);
+
+
+function restartGame(){
+    
+}
