@@ -33,6 +33,8 @@ let userInfoChallenge = [];
 const rpsContainer = ["rock", "paper", "scissors"];
 
 
+
+
 userGender.addEventListener('click', function() {
     changeBackToNo();
 })
@@ -154,7 +156,6 @@ function gameSectionStartBeginner(){
     document.querySelector('.container-element-show').innerHTML = " ";
     document.querySelector('.container-brave').innerHTML = " ";
     containerInputInteractions.style.width= '200px';
-    // containerInputInteractions.style.height= '50px';
     containerInputInteractions.innerHTML = "<img src = './images/loading.gif'/>";
 
     containerUserInfo.style.display = 'flex';
@@ -172,15 +173,12 @@ function gameSectionStartBeginner(){
 
     setTimeout(function (){
         gameStartSectionRender();
-      
     }, 1000);
 }
 
 function gameStartSectionRender(){
     document.querySelector('.container-input-interactions').innerHTML = " ";
     containerInputInteractions.style.width= '100%';
-    // containerInputInteractions.style.height= '10rem';
-
    
     gameStartSection.style.display = 'block';
     gameStartSection.style.width = '90%';
@@ -194,7 +192,6 @@ function gameStartSectionRender(){
     userSide.style.padding = '10px 0';
     cpuSideRender.style.width = '50%';
     cpuSideRender.style.padding = '10px 0';
-   
     
     containerInputInteractions.appendChild(gameStartSection);
 }
@@ -259,18 +256,14 @@ function beginnerChallenge (username, usergender, userlevel){
 btnGo.addEventListener('click', function() {
     
     if(userSelectElement.value === ""){
-        // containerInputInteractions.style.height= '7vh';
         userSideLeft.style.display = 'none';
         btnGoBackDiv.style.display = "block";
-        // cpuSideRender.style.marginLeft = "50px";
         cpuSideRender.innerHTML = "<img src = './images/marry-runaway.png' />";
-        // containerInputInteractions.style.height= '5rem';
-
-        // btnGoBackDiv.style.paddingBottom = "30px";
         console.log("empty");
     }
     else {
-        console.log(userSelectElement.value);
+        gameStartsNow(userSelectElement.value);
+        
     }
 
 });
@@ -279,16 +272,21 @@ btnGoBackDiv.addEventListener('click', function() {
     userSideLeft.style.display = 'flex';
     gameStartSectionRender();
     btnGoBackDiv.style.display = "none";
-    // containerInputInteractions.style.height= '10rem';
-    // userSideLeft.style.display = 'flex';
-    // userSideLeft.style.flexDirection = 'column';
-    // btnGo.style.width = '70%';
-
-    // userSelectElement.style.padding = '0 20px';
-    // btnGoBackDiv.style.display = "none";
-    // cpuSideRender.style.marginRight = "100px";
-    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />";
-
-    
+    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
 });
+
+function cpuRandomSelect(){
+    const cpuSelect = "./images/" +rpsContainer[Math.floor(Math.random() * 3)] +".png";
+    return cpuSelect;
+}
+function gameStartsNow(userSelectValue) {
+    gameStart.style.padding = '0';
+    const cpu = cpuRandomSelect();
+    const userValue = "./images/" + userSelectValue + ".png";
+
+    userSideLeft.innerHTML = "<img src="+userValue+ "/>";
+    cpuSideRender.innerHTML = "<img src="+cpu+ " width=20% height=20% />";
+    console.log("cpu select: " +cpu);
+    console.log("user select: "+userValue);
+}
 
