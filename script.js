@@ -182,8 +182,8 @@ function gameSectionStartBeginner(){
         gameStart.style.display = 'flex';
         gameStart.style.justifyContent = 'space-between';
         gameStart.style.alignItems = 'center';
-        gameStart.style.marginLeft = '10%';
-        gameStart.style.marginRight = '10%';
+        gameStart.style.margin = '0 auto';
+        
         containerInputInteractions.appendChild(gameStartSection);
     }, 1000);
 }
@@ -251,7 +251,7 @@ btnGo.addEventListener('click', function() {
         containerInputInteractions.style.height= '7vh';
         userSideLeft.style.display = 'none';
         btnGoBackDiv.style.display = "block";
-        cpuSideRender.style.marginLeft = "100px";
+        cpuSideRender.style.marginLeft = "50px";
         cpuSideRender.innerHTML = "<img src = './images/marry-runaway.png' />";
         // btnGoBackDiv.style.paddingBottom = "30px";
         console.log("empty");
