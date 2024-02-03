@@ -28,6 +28,7 @@ const btnGoBackDiv = document.querySelector('.redo-btn');
 const showUserSide = document.querySelector('.show-user-side');
 const cpuSideRender = document.querySelector('.cpu-side');
 const userSideLeft = document.querySelector('.user-side-left');
+const processingBar = document.querySelector('.processing-bar');
 
 let userInfoChallenge = [];
 const rpsContainer = ["rock", "paper", "scissors"];
@@ -280,12 +281,24 @@ function cpuRandomSelect(){
     return cpuSelect;
 }
 function gameStartsNow(userSelectValue) {
-    gameStart.style.padding = '0';
-    const cpu = cpuRandomSelect();
+    userSideLeft.innerHTML = "";
+    const imgUser = document.createElement('img');
     const userValue = "./images/" + userSelectValue + ".png";
+    imgUser.src = userValue;
+    userSideLeft.appendChild(imgUser);
 
-    userSideLeft.innerHTML = "<img src="+userValue+ "/>";
-    cpuSideRender.innerHTML = "<img src="+cpu+ " width=20% height=20% />";
+
+    cpuSideRender.innerHTML = "";
+    
+    const imgCpu = document.createElement('img');
+    const cpu = cpuRandomSelect();   
+    imgCpu.src = cpu;
+    cpuSideRender.style.height = '20%';
+    cpuSideRender.style.width = '20%';
+    cpuSideRender.appendChild(imgCpu);
+    
+    processingBar.style.display = 'block';
+    // cpuSideRender.innerHTML = "<img src="+cpu+ " width=20% height=20% />";
     console.log("cpu select: " +cpu);
     console.log("user select: "+userValue);
 }
