@@ -263,8 +263,13 @@ btnGo.addEventListener('click', function() {
         console.log("empty");
     }
     else {
-        gameStartsNow(userSelectElement.value);
-        
+        // while(roundCount <= 3){
+            gameStartsNow(userSelectElement.value);
+            if(roundCount.innerText > 3){
+                processingBar.innerText = 'Game Over.';
+            }
+        // } 
+        console.log(roundCount.innerText);
     }
 
 });
@@ -276,30 +281,83 @@ btnGoBackDiv.addEventListener('click', function() {
     cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
 });
 
-function cpuRandomSelect(){
-    const cpuSelect = "./images/" +rpsContainer[Math.floor(Math.random() * 3)] +".png";
-    return cpuSelect;
-}
+
+let userScore = document.getElementById('userScore');
+let cpuScore = document.getElementById('cpuScore');
+let roundCount = document.getElementById('round-count');
+
+console.log(userScore.innerText);
+console.log(cpuScore.innerText);
+console.log(roundCount.innerText);
+
 function gameStartsNow(userSelectValue) {
+   
     userSideLeft.innerHTML = "";
     const imgUser = document.createElement('img');
     const userValue = "./images/" + userSelectValue + ".png";
     imgUser.src = userValue;
     userSideLeft.appendChild(imgUser);
 
+    const cpuElement = rpsContainer[Math.floor(Math.random() * 3)];
+    const cpuSelect = "./images/" + cpuElement +".png";
+    const cpu = cpuSelect;  
+    cpuSideRender.innerHTML = "<img src = './images/thinking.png' width=100% height=100% />";
 
-    cpuSideRender.innerHTML = "";
+    setTimeout(function() {
+        cpuSideRender.innerHTML = " ";
+        const imgCpu = document.createElement('img');
+        
+        imgCpu.src = cpu;
+        cpuSideRender.style.height = '20%';
+        cpuSideRender.style.width = '20%';
+        cpuSideRender.appendChild(imgCpu);
+        processingBar.style.display = 'block';
+
+    }, 2000);
     
-    const imgCpu = document.createElement('img');
-    const cpu = cpuRandomSelect();   
-    imgCpu.src = cpu;
-    cpuSideRender.style.height = '20%';
-    cpuSideRender.style.width = '20%';
-    cpuSideRender.appendChild(imgCpu);
     
-    processingBar.style.display = 'block';
-    // cpuSideRender.innerHTML = "<img src="+cpu+ " width=20% height=20% />";
-    console.log("cpu select: " +cpu);
+    setTimeout(function() {
+        if((userSelectValue === 'rock' &&  cpuElement === 'rock') || (userSelectValue === 'paper' &&  cpuElement === 'paper') || (userSelectValue === 'scissors' &&  cpuElement === 'scissors')){
+            processingBar.innerText = "Draw";
+            processingBar.style.backgroundColor = "blue";
+            roundCount.innerText++;
+        }
+        else if(userSelectValue === 'rock' &&  cpuElement === 'paper'){
+            processingBar.innerText = "CPU Mary Asare wins!";
+            cpuScore.innerText++;
+            processingBar.style.backgroundColor = "gold";
+        }
+        else if(userSelectValue === 'paper' &&  cpuElement === 'scissors'){
+            processingBar.innerText = "CPU Mary Asare wins!";
+            cpuScore.innerText++;
+            processingBar.style.backgroundColor = "gold";
+        }
+        else if(userSelectValue === 'scissors' &&  cpuElement === 'rock'){
+            processingBar.innerText = "CPU Mary Asare wins!";
+            cpuScore.innerText++;
+            processingBar.style.backgroundColor = "gold";
+        }
+        else if(userSelectValue === 'paper' &&  cpuElement === 'rock'){
+            processingBar.innerText = "User wins!";
+            userScore.innerText++;
+            processingBar.style.backgroundColor = "green";
+        }
+        else if(userSelectValue === 'scissors' &&  cpuElement === 'paper'){
+            processingBar.innerText = "User wins!";
+            userScore.innerText++;
+            processingBar.style.backgroundColor = "green";
+        }
+        else if(userSelectValue === 'rock' &&  cpuElement === 'scissors'){
+            processingBar.innerText = "User wins!";
+            userScore.innerText++;
+            processingBar.style.backgroundColor = "green";
+        }
+
+    }, 5000);
+    gameSectionStartBeginner(); 
+    // gameStartSectionRender();
+    
+    console.log("cpu select: " + cpu);
     console.log("user select: "+userValue);
 }
 
