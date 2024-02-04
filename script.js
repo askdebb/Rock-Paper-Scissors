@@ -158,7 +158,9 @@ function gameSectionStartBeginner(){
     document.querySelector('.container-element-show').innerHTML = " ";
     document.querySelector('.container-brave').innerHTML = " ";
     containerInputInteractions.style.width= '200px';
-    containerInputInteractions.innerHTML = "<img src = './images/loading.gif'/>";
+    containerInputInteractions.innerHTML = "<img src = './images/loading.gif' height='100%'/>";
+    const beginnerSound = new Audio("./sounds/beginner.mp3");
+    beginnerSound.play();
 
     containerUserInfo.style.display = 'flex';
     containerScore.style.display = 'flex';
@@ -174,13 +176,15 @@ function gameSectionStartBeginner(){
     containerElementShow.appendChild(containerUserInfo);
 
     setTimeout(function (){
+        document.querySelector('body').style.backgroundColor = '#E5E5E5';
         gameStartSectionRender();
-    }, 1000);
+    }, 9000);
 }
 
 function gameStartSectionRender(){
     document.querySelector('.container-input-interactions').innerHTML = " ";
-    containerInputInteractions.style.width= '100%';
+    containerInputInteractions.style.width= '96%';
+    containerInputInteractions.style.margin= '0 auto';
    
     gameStartSection.style.display = 'block';
     gameStartSection.style.width = '90%';
@@ -296,6 +300,20 @@ function gameStartsNow(userSelectValue) {
     imgUser.src = userValue;
     userSideLeftImage.appendChild(imgUser);
 
+    if(userSelectValue === 'rock'){
+        const userRockSound = new Audio("./sounds/rock.mp3");
+        userRockSound.play();
+
+    } else if (userSelectValue === 'paper'){
+        const userPaperSound = new Audio("./sounds/paper.mp3");
+        userPaperSound.play();
+
+    }else {
+        const userScissorsSound = new Audio("./sounds/scissors.mp3");
+        userScissorsSound.play();
+
+    }
+
     const cpuElement = rpsContainer[Math.floor(Math.random() * 3)];
     const cpuSelect = "./images/" + cpuElement +".png";
     const cpu = cpuSelect;  
@@ -311,6 +329,19 @@ function gameStartsNow(userSelectValue) {
         cpuSideRender.appendChild(imgCpu);
         processingBar.style.display = 'block';
 
+        if(cpuElement === 'rock'){
+            const cpuRockSound = new Audio("./sounds/rock.mp3");
+            cpuRockSound.play();
+    
+        } else if (cpuElement === 'paper'){
+            const cpuPaperSound = new Audio("./sounds/paper.mp3");
+            cpuPaperSound.play();
+    
+        }else {
+            const cpuScissorsSound = new Audio("./sounds/scissors.mp3");
+            cpuScissorsSound.play();
+        }
+
     }, 2000);
     
     
@@ -318,27 +349,55 @@ function gameStartsNow(userSelectValue) {
         if((userSelectValue === 'rock' &&  cpuElement === 'rock') || (userSelectValue === 'paper' &&  cpuElement === 'paper') || (userSelectValue === 'scissors' &&  cpuElement === 'scissors')){
             processingBar.innerText = "Draw";
             processingBar.style.backgroundColor = "blue";
+            const drawSound = new Audio("./sounds/draw.mp3");
+            drawSound.play();
             setTimeout(function() {
                 reStageGameNextRound();
-            },2000);
+            },3000);
         }
         else if(userSelectValue === 'rock' &&  cpuElement === 'paper'){
-            cpuWinsEachRound();
+            const cpuWinsSound = new Audio("./sounds/paperfinal.mp3");
+            cpuWinsSound.play();
+            setTimeout(() => {
+                cpuWinsEachRound();
+            }, 6000);
         }
         else if(userSelectValue === 'paper' &&  cpuElement === 'scissors'){
-            cpuWinsEachRound();
+            const cpuWinsSound = new Audio("./sounds/scissorsfinal.mp3");
+            cpuWinsSound.play();
+            setTimeout(() => {
+                cpuWinsEachRound();
+            }, 6000);
         }
         else if(userSelectValue === 'scissors' &&  cpuElement === 'rock'){
-            cpuWinsEachRound();
+            const cpuWinsSound = new Audio("./sounds/rockfinal.mp3");
+            cpuWinsSound.play();
+            setTimeout(() => {
+                cpuWinsEachRound();
+            }, 6000);
+            
         }
         else if(userSelectValue === 'paper' &&  cpuElement === 'rock'){
-            userWinsEachRound();
+            const userWinsSound = new Audio("./sounds/paperfinal.mp3");
+            userWinsSound.play();
+            setTimeout(() => {
+                userWinsEachRound();
+            }, 6000);
         }
         else if(userSelectValue === 'scissors' &&  cpuElement === 'paper'){
-            userWinsEachRound();
+            const userWinsSound = new Audio("./sounds/scissorsfinal.mp3");
+            userWinsSound.play();
+            setTimeout(() => {
+                userWinsEachRound();
+            }, 6000);
         }
         else if(userSelectValue === 'rock' &&  cpuElement === 'scissors'){
-            userWinsEachRound();
+            const userWinsSound = new Audio("./sounds/rockfinal.mp3");
+            userWinsSound.play();
+            setTimeout(() => {
+                userWinsEachRound();
+            }, 6000);
+            
         }
 
     }, 5000);
@@ -389,12 +448,21 @@ function reStageGameNextRound(){
                 const userNameData = userData.Username;
                 gameEndStat((userNameData + " is the champion!"), 'green');
              })
+            const userWinnerSound = new Audio("./sounds/userwinner.mp3");
+            userWinnerSound.play();
+            document.querySelector('body').style.backgroundColor = "#5dc7e7";
+
         } else if (userScore.innerText < cpuScore.innerText){
             gameEndStat("CPU Mary Asare is the champion!",  '#daa520');
+            const cpuWinnerSound = new Audio("./sounds/gameover-lost.mp3");
+            cpuWinnerSound.play();
+            document.querySelector('body').style.backgroundColor = "#800303";
+
         }
         else {
             gameEndStat("A tie!", "blue");
-          
+            const noWinnerSound = new Audio("./sounds/tie.mp3");
+            noWinnerSound.play();
         }
 
     } else {
@@ -464,6 +532,7 @@ function gameEndStat(outcomeStat, backGroundColor){
 }
 
 function restartGame(){
+    document.querySelector('body').style.backgroundColor = '#E5E5E5';
     gameEnd.style.display = "none";
     gameRunner = 3;
     cpuScore.innerText = "0";
