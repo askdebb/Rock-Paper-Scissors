@@ -265,15 +265,8 @@ btnGo.addEventListener('click', function() {
         console.log("empty");
     }
     else {
-        // if(gameRunner === 0){
-        //         roundCountMain.innerHTML = " ";
-        //         roundCountMain.innerText = "Winner is: Me"
-        // }
-        // else{
+    
             gameStartsNow(userSelectElement.value);
-        // }
-            
-
     }
 
 });
@@ -386,46 +379,23 @@ function cpuWinsEachRound(){
 const gameEnd = document.querySelector('.game-end');
 function reStageGameNextRound(){
     if(gameRunner < 1){
-        roundCountMain.innerText = "Done";
+        roundCountMain.innerText = "Game Over";
+        roundCountMain.style.color = "red";
+        roundCountMain.style.fontWeight = "600";
         gameStart.style.display = "none";
         
         if(userScore.innerText > cpuScore.innerText){
             userInfoChallenge.forEach((userData) => {
                 const userNameData = userData.Username;
-                gameEnd.innerText = userNameData + " is the champion!";
-                gameEnd.style.backgroundColor = 'green';
-                gameEnd.style.textAlign = "center";
-                gameEnd.style.color = '#fff';
-                processingBar.style.display = "none";
+                gameEndStat((userNameData + " is the champion!"), 'green');
              })
         } else if (userScore.innerText < cpuScore.innerText){
-            gameEnd.innerText = "CPU Mary Asare is the champion!";
-            gameEnd.style.backgroundColor = '#daa520';
-            gameEnd.style.textAlign = "center";
-            gameEnd.style.color = '#fff';
-            processingBar.style.display = "none";
+            gameEndStat("CPU Mary Asare is the champion!",  '#daa520');
         }
         else {
-            gameEnd.innerText = "A tie!";
-            gameEnd.style.backgroundColor = 'blue';
-            gameEnd.style.textAlign = "center";
-            gameEnd.style.color = '#fff';
-            processingBar.style.display = "none";
+            gameEndStat("A tie!", "blue");
+          
         }
-
-        setTimeout(function(){
-            const btnRestart = document.createElement('button');
-            btnRestart.innerText = "Yes";
-            btnRestart.style.marginLeft = "5px";
-            btnRestart.style.backgroundColor = "#daa520";
-            btnRestart.style.color = "#fff";
-            btnRestart.style.padding = "5px 6px";
-            btnRestart.onclick = restartGame;
-
-            gameEnd.innerText = "Restart?";
-            gameEnd.appendChild(btnRestart);
-
-        },2000);
 
     } else {
         userSideLeft.style.display = 'flex';
@@ -434,7 +404,7 @@ function reStageGameNextRound(){
         gameStartSectionRender();
         cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
         processingBar.style.display = 'none';
-        processingBar.innerText = 'processing winner';
+        processingBar.innerText = 'processing winner...';
         processingBar.style.backgroundColor = 'red';
         roundCount.innerText++;
         gameRunner--;
@@ -446,6 +416,89 @@ console.log("now round: "+roundCount.innerText);
 console.log("game runner now: "+gameRunner);
 
 
+function gameEndStat(outcomeStat, backGroundColor){
+    gameEnd.style.display = 'block';
+    gameEnd.innerText = outcomeStat;
+    gameEnd.style.backgroundColor = backGroundColor;
+    gameEnd.style.textAlign = "center";
+    gameEnd.style.color = '#fff';
+    processingBar.style.display = "none";
+
+    setTimeout(function(){
+        const btnRestartYes = document.createElement('button');
+        btnRestartYes.innerText = "Yes";
+        btnRestartYes.style.backgroundColor = "#fff";
+        btnRestartYes.style.color = backGroundColor;
+        btnRestartYes.style.padding = "5px 6px";
+        btnRestartYes.style.margin = "5px 15px";
+        btnRestartYes.onclick = restartGame;
+        btnRestartYes.style.cursor = 'pointer';
+        btnRestartYes.style.border = 'none';
+        btnRestartYes.style.borderRadius = '3px';
+
+        const btnRestartNo = document.createElement('button');
+        btnRestartNo.innerText = 'No';
+        btnRestartNo.style.backgroundColor = "#fff";
+        btnRestartNo.style.color = 'red';
+        btnRestartNo.style.padding = "5px 6px";
+        btnRestartNo.style.margin = "5px 15px";
+        btnRestartNo.onclick = endGame;
+        btnRestartNo.style.cursor = 'pointer';
+        btnRestartNo.style.border = 'none';
+        btnRestartNo.style.borderRadius = '3px';
+
+
+        btnRestartYes.addEventListener("mouseover", function(){
+            this.style.fontWeight = '600';
+        });
+        btnRestartNo.addEventListener("mouseover", function(){
+            this.style.fontWeight = '600';
+        });
+
+        gameEnd.innerText = "Restart?";
+        gameEnd.appendChild(btnRestartYes);
+        gameEnd.appendChild(btnRestartNo);
+
+    },2000);
+
+}
+
 function restartGame(){
+    gameEnd.style.display = "none";
+    gameRunner = 3;
+    cpuScore.innerText = "0";
+    userScore.innerText = "0";
+    roundCount.innerText = "1";
+    roundCountMain.innerText = "Round " +roundCount.innerText+ " of 3";
+    roundCountMain.style.color = "black";
+    roundCountMain.style.fontWeight = "normal";
+
+    userSideLeft.style.display = 'flex';
     
+    userSideLeftImage.style.display = 'none';
+    userSideLeftImage.innerHTML = " ";
+    gameStartSectionRender();
+    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
+    // gameStartsNow(userSelectElement.value);
+
+
+    btnGo.addEventListener('click', function() {
+    
+        if(userSelectElement.value === ""){
+            userSideLeft.style.display = 'none';
+            btnGoBackDiv.style.display = "block";
+            cpuSideRender.innerHTML = "<img src = './images/marry-runaway.png' />";
+            console.log("empty");
+        }
+        else {
+                userSideLeftImage.innerHTML = " ";
+                gameStartsNow(userSelectElement.value);
+        }
+    
+    });
+
+
+}
+function endGame(){
+
 }
