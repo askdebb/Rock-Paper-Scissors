@@ -66,6 +66,7 @@ const btnClicked = $('.btn').click(function (e){
     let btnID = e.target.id;
     if(btnID === btnAgreeYes.id) {
         userInfoChallenge = [];
+        emElement.style.display = "none";
         btnReturnToFillForm();
         console.log(userInfoChallenge);
     }
@@ -79,8 +80,12 @@ const btnClicked = $('.btn').click(function (e){
         }, 200);
     }
     else {
-            document.querySelector('.container-input-interactions').innerHTML = " ";
+        waitingForChallenger.style.display = "none";
+        noName.style.display = "none";
+        yesInfo.style.display = "none";
+            // document.querySelector('.container-input-interactions').innerHTML = " ";
             btnAgreeYes.style.visibility = "hidden";
+            emElement.style.display = "block";
 
             btnAgreeNo.addEventListener('mouseover', function() {
                 this.innerText = "No";
