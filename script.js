@@ -53,13 +53,13 @@ userLevel.addEventListener('click', function() {
 
 userName.addEventListener("keyup", function() {
     this.value = this.value.replace(/[^a-zA-Z ]+/,'');
+    changeNoBtnToClear();
     
 })
 
 userName.addEventListener('focus', function () {
     changeNoBtnToClear();
 })
-
 
 
 const btnClicked = $('.btn').click(function (e){
@@ -77,12 +77,12 @@ const btnClicked = $('.btn').click(function (e){
         userInfoChallenge = [];
             setTimeout(function(){
                 changeBackToNo();
-        }, 200);
+        }, 1000);
     }
     else {
-        waitingForChallenger.style.display = "none";
-        noName.style.display = "none";
-        yesInfo.style.display = "none";
+            waitingForChallenger.style.display = "none";
+            noName.style.display = "none";
+            yesInfo.style.display = "none";
             // document.querySelector('.container-input-interactions').innerHTML = " ";
             btnAgreeYes.style.visibility = "hidden";
             emElement.style.display = "block";
@@ -128,7 +128,7 @@ function soundControl(){
             soundPlay();
         }, 1000);
         setTimeout(function (){
-            emElement.innerText = "Don't you wanna compete with Sir Chris?";
+            emElement.innerText = "Don't you wanna compete with Chris?";
             soundPlay();
         }, 3000);
 }
@@ -648,5 +648,5 @@ function endGame(){
     userSideLeftImage.style.display = 'none';
     // gameSectionStartBeginner(); 
     cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
-    
+    changeBackToNo();
 }
