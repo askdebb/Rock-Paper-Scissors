@@ -14,18 +14,20 @@
             <p id="p-red">for relaxation!</p>
         </div>
         <div class="container-element-show">
-            <div class="element-column">
-                <img src="./images/rock.png" alt="rock"> 
-                <p id="desc-element">Rock</p>
-            </div>
-            <div class="element-column">
-                <img src="./images/paper.png" alt="paper"> 
-                <p id="desc-element">Paper</p>
-            </div>
-
-            <div class="element-column">
-                <img src="./images/scissors.png" alt="scissors">
-                <p id="desc-element">Scissors</p>
+            <div class="element-column-container">
+                <div class="element-column">
+                    <img src="./images/rock.png" alt="rock"> 
+                    <p id="desc-element">Rock</p>
+                </div>
+                <div class="element-column">
+                    <img src="./images/paper.png" alt="paper"> 
+                    <p id="desc-element">Paper</p>
+                </div>
+    
+                <div class="element-column">
+                    <img src="./images/scissors.png" alt="scissors">
+                    <p id="desc-element">Scissors</p>
+                </div>
             </div>
 
             <div class="container-user-info">
@@ -45,7 +47,7 @@
         </div>
         
         <div class="container-brave">
-            <h2>Any Challenger?</h2>
+            <h2 id="h2">Any Challenger?</h2>
             <div class="brave-btn">
                 <button id="btn-yes" class="btn">Yes</button>
                 <button id="btn-no" class="btn noBtn">No</button>
@@ -55,13 +57,14 @@
                     <p>Score: <span id="userScore"><em>0</em></span></p>
                 </div>
                 <div class="round-count"><p>Round <span id="round-count"><em>1</em></span> of <em>3</em></p></div>
+                <div class="round-count-main"></div>
                 <div class="cpu-score">
                     <p>Score: <span id="cpuScore"><em>0</em></span></p>
                 </div>
             </div>
         </div>
         <div class="container-input-interactions">
-             <em id="em">waiting for the challenger...</em>
+             <em id="waiting">waiting for the challenger...</em>
              <div class="game-start-section">
                 <div class="game-start">
                     <div class="user-side">
@@ -115,6 +118,10 @@
                 </div>               
                 <button type="button" id="submit-user-info" > Begin!</button>
              </div>
+             <span id="no-name"> <em>No name entered</em> &nbsp;&nbsp;&nbsp; 
+                <button id="no-name-btn"> Go back </button> 
+
+             </span>
         </div>
         <div class="processing-bar">
             processing winner...

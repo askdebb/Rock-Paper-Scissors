@@ -6,14 +6,21 @@ const userName = document.getElementById('username');
 const userGender = document.getElementById('gender');
 const userLevel = document.getElementById('level');
 const yesBtn = document.getElementById('submit-user-info');
+const noName = document.getElementById('no-name');
 
 let challengeUser = document.getElementById('challenge-user');
 let challengeGender = document.getElementById('challenge-gender');
 let challengeLevel = document.getElementById('challenge-level');
 
 const containerBrave = document.querySelector('.container-brave');
+
+const anyChallengerHead = document.getElementById('h2');
+const braveBtn = document.querySelector('.brave-btn');
 const containerElementShow = document.querySelector('.container-element-show');
+const elementColumnContainer = document.querySelector('.element-column-container');
 const containerScore = document.querySelector('.container-score');
+
+const waitingForChallenger = document.getElementById('waiting');
 
 const containerInputInteractions = document.querySelector('.container-input-interactions');
 const containerUserInfo = document.querySelector('.container-user-info');
@@ -58,7 +65,9 @@ userName.addEventListener('focus', function () {
 const btnClicked = $('.btn').click(function (e){
     let btnID = e.target.id;
     if(btnID === btnAgreeYes.id) {
+        userInfoChallenge = [];
         btnReturnToFillForm();
+        console.log(userInfoChallenge);
     }
     else if (e.target.innerText === "Clear"){
         userName.value = "";
@@ -135,7 +144,10 @@ yesBtn.addEventListener("click", function() {
 
    switch (userNameReal) {
     case '':
-       feedBackInfo("No name entered");
+        yesInfo.style.display = "none";
+        noName.style.display = "block";
+
+    //    feedBackInfo("No name entered");
         break;
     default:
         userInfoChallenge.push({
@@ -154,14 +166,73 @@ yesBtn.addEventListener("click", function() {
    })
 });
 
+noName.addEventListener('click', function() {
+    yesInfo.style.display = "flex";
+    noName.style.display = "none";
+});
+
+// function feedBackInfo(infoHere){
+//     // document.querySelector('.container-input-interactions').innerHTML = " ";
+
+//     yesInfo.style.display = 'none';
+//     const newSpanElement = document.createElement('span');
+//     const newBtn = document.createElement('button');
+//     newSpanElement.innerText = infoHere;
+//     newSpanElement.style.fontWeight = '600';
+    
+//     newBtn.innerText = "Go Back";
+//     newBtn.style.padding = '5px 10px';
+//     newBtn.style.border = 'none';
+//     newBtn.style.backgroundColor = '#5cb45c';
+//     newBtn.style.color = '#fff';
+//     newBtn.style.cursor = 'pointer';
+//     newBtn.style.borderRadius = '5px';
+//     newBtn.style.fontSize = '1rem';
+//     newBtn.style.marginLeft = '5px';
+
+//     newBtn.addEventListener('mouseover', function() {
+//         this.style.backgroundColor = '#088f08';
+//         this.style.fontWeight = '600';
+//         this.style.transition = '0.3s ease-in-out';
+//     })
+
+//     newBtn.onclick = btnReturnToFillForm;
+//     newSpanElement.appendChild(newBtn);
+//     containerInputInteractions.appendChild(newSpanElement);
+// }
+
+function btnReturnToFillForm() {
+    waitingForChallenger.style.display = "none";
+    noName.style.display = "none";
+    // document.querySelector('.container-input-interactions').innerHTML = " ";
+ 
+    yesInfo.style.display = "flex";
+    yesInfo.style.flexDirection = "column"; 
+    yesInfo.style.justifyContent = "space-between"; 
+    containerInputInteractions.style.backgroundColor = '#E5E5E5';
+    containerInputInteractions.appendChild(yesInfo);
+}
+
 function gameSectionStartBeginner(){
-    document.querySelector('.container-element-show').innerHTML = " ";
-    document.querySelector('.container-brave').innerHTML = " ";
-    containerInputInteractions.style.width= '200px';
-    containerInputInteractions.innerHTML = "<img src = './images/loading.gif' height='100%'/>";
+    // document.querySelector('.container-element-show').innerHTML = " ";
+    // document.querySelector('.container-brave').innerHTML = " ";
+    braveBtn.style.display = "none";
+
+    anyChallengerHead.style.display = "none";
+    waitingForChallenger.style.display = "none";
+    yesInfo.style.display = "none";
+    containerInputInteractions.style.width= '96%';
+
+    const divForGif = document.createElement('div');
+    divForGif.innerHTML = "<img src = './images/loading.gif' height='100%'/>";
+    containerInputInteractions.appendChild(divForGif);
+    
     const beginnerSound = new Audio("./sounds/beginner.mp3");
     beginnerSound.play();
 
+    
+    elementColumnContainer.style.display = "none";
+   
     containerUserInfo.style.display = 'flex';
     containerScore.style.display = 'flex';
 
@@ -176,15 +247,16 @@ function gameSectionStartBeginner(){
     containerElementShow.appendChild(containerUserInfo);
 
     setTimeout(function (){
+        divForGif.style.display = "none";
         document.querySelector('body').style.backgroundColor = '#E5E5E5';
         gameStartSectionRender();
     }, 9000);
 }
 
 function gameStartSectionRender(){
-    document.querySelector('.container-input-interactions').innerHTML = " ";
+    // document.querySelector('.container-input-interactions').innerHTML = " ";
     containerInputInteractions.style.width= '96%';
-    containerInputInteractions.style.margin= '0 auto';
+    // containerInputInteractions.style.margin= '0 auto';
    
     gameStartSection.style.display = 'block';
     gameStartSection.style.width = '90%';
@@ -203,44 +275,10 @@ function gameStartSectionRender(){
     containerInputInteractions.appendChild(gameStartSection);
 }
 
-function btnReturnToFillForm() {
-    document.querySelector('.container-input-interactions').innerHTML = " ";
-    yesInfo.style.display = "flex";
-    yesInfo.style.flexDirection = "column"; 
-    yesInfo.style.justifyContent = "space-between"; 
-    containerInputInteractions.style.backgroundColor = '#E5E5E5';
-    containerInputInteractions.appendChild(yesInfo);
-}
 
 
-function feedBackInfo(infoHere){
-    document.querySelector('.container-input-interactions').innerHTML = " ";
 
-    yesInfo.style.display = 'none';
-    const newSpanElement = document.createElement('span');
-    const newBtn = document.createElement('button');
-    newSpanElement.innerText = infoHere;
-    newSpanElement.style.fontWeight = '600';
-    newBtn.innerText = "Go Back";
-    newBtn.style.padding = '5px 10px';
-    newBtn.style.border = 'none';
-    newBtn.style.backgroundColor = '#5cb45c';
-    newBtn.style.color = '#fff';
-    newBtn.style.cursor = 'pointer';
-    newBtn.style.borderRadius = '5px';
-    newBtn.style.fontSize = '1rem';
-    newBtn.style.marginLeft = '5px';
 
-    newBtn.addEventListener('mouseover', function() {
-        this.style.backgroundColor = '#088f08';
-        this.style.fontWeight = '600';
-        this.style.transition = '0.3s ease-in-out';
-    })
-
-    newBtn.onclick = btnReturnToFillForm;
-    newSpanElement.appendChild(newBtn);
-    containerInputInteractions.appendChild(newSpanElement);
-}
 
 function beginnerChallenge (username, usergender, userlevel){
    
@@ -286,7 +324,8 @@ btnGoBackDiv.addEventListener('click', function() {
 let userScore = document.getElementById('userScore');
 let cpuScore = document.getElementById('cpuScore');
 let roundCount = document.getElementById('round-count');
-let roundCountMain = document.querySelector('.round-count');
+let roundCountMainRound = document.querySelector('.round-count');
+let roundCountMain = document.querySelector('.round-count-main');
 
 let gameRunner = 2;
 
@@ -367,7 +406,7 @@ function gameStartsNow(userSelectValue) {
             cpuWinsSound.play();
             setTimeout(() => {
                 cpuWinsEachRound();
-            }, 6000);
+            }, 5000);
         }
         else if(userSelectValue === 'scissors' &&  cpuElement === 'rock'){
             const cpuWinsSound = new Audio("./sounds/rockfinal.mp3");
@@ -389,7 +428,7 @@ function gameStartsNow(userSelectValue) {
             userWinsSound.play();
             setTimeout(() => {
                 userWinsEachRound();
-            }, 6000);
+            }, 5000);
         }
         else if(userSelectValue === 'rock' &&  cpuElement === 'scissors'){
             const userWinsSound = new Audio("./sounds/rockfinal.mp3");
@@ -436,8 +475,11 @@ function cpuWinsEachRound(){
 }
 
 const gameEnd = document.querySelector('.game-end');
+
 function reStageGameNextRound(){
     if(gameRunner < 1){
+        roundCountMainRound.style.display = 'none';
+        roundCountMain.style.display = 'flex';
         roundCountMain.innerText = "Game Over";
         roundCountMain.style.color = "red";
         roundCountMain.style.fontWeight = "600";
@@ -453,7 +495,7 @@ function reStageGameNextRound(){
             document.querySelector('body').style.backgroundColor = "#5dc7e7";
 
         } else if (userScore.innerText < cpuScore.innerText){
-            gameEndStat("CPU Mary Asare is the champion!",  '#daa520');
+            gameEndStat("CPU Mary Asare is the champion and you LOST!!",  '#946d09');
             const cpuWinnerSound = new Audio("./sounds/gameover-lost.mp3");
             cpuWinnerSound.play();
             document.querySelector('body').style.backgroundColor = "#800303";
@@ -532,42 +574,74 @@ function gameEndStat(outcomeStat, backGroundColor){
 }
 
 function restartGame(){
+    gameRunner = 2;
+    userScore.innerText= 0;
+    cpuScore.innerText= 0;
+    roundCount.innerText = 1;
+
+    roundCountMainRound.style.display = "flex";
+    roundCountMain.style.display = "none";
+    processingBar.innerText = "processing winner...";
+    processingBar.style.backgroundColor = 'red';
+
     document.querySelector('body').style.backgroundColor = '#E5E5E5';
     gameEnd.style.display = "none";
-    gameRunner = 3;
-    cpuScore.innerText = "0";
-    userScore.innerText = "0";
-    roundCount.innerText = "1";
-    roundCountMain.innerText = "Round " +roundCount.innerText+ " of 3";
-    roundCountMain.style.color = "black";
-    roundCountMain.style.fontWeight = "normal";
-
     userSideLeft.style.display = 'flex';
+
+    userSideLeftImage.innerHTML = " ";
     
     userSideLeftImage.style.display = 'none';
-    userSideLeftImage.innerHTML = " ";
-    gameStartSectionRender();
     cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
-    // gameStartsNow(userSelectElement.value);
-
-
-    btnGo.addEventListener('click', function() {
-    
-        if(userSelectElement.value === ""){
-            userSideLeft.style.display = 'none';
-            btnGoBackDiv.style.display = "block";
-            cpuSideRender.innerHTML = "<img src = './images/marry-runaway.png' />";
-            console.log("empty");
-        }
-        else {
-                userSideLeftImage.innerHTML = " ";
-                gameStartsNow(userSelectElement.value);
-        }
-    
-    });
-
-
+    gameSectionStartBeginner(); 
 }
-function endGame(){
 
+function endGame(){
+    document.querySelector('body').style.backgroundColor = '#E5E5E5';
+
+    gameRunner = 2;
+    userScore.innerText= 0;
+    cpuScore.innerText= 0;
+    roundCount.innerText = 1;
+
+    roundCountMainRound.style.display = "flex";
+    roundCountMain.style.display = "none";
+
+    userInfoChallenge = [];
+    gameEnd.style.display = "none";
+
+    elementColumnContainer.style.display = "flex";
+    containerUserInfo.style.display = "none";
+
+    challengeUser.innerText = "";
+    challengeGender.innerText = "";
+    challengeLevel.innerText = "";
+   
+
+
+    containerScore.style.display = "none";
+    waitingForChallenger.style.display = "block";
+    gameStartSection.style.display = "none";
+
+    containerBrave.style.display = "flex";
+    braveBtn.style.display = "block";
+    anyChallengerHead.style.display = "block";
+
+    braveBtn.style.marginLeft = "20px";
+    anyChallengerHead.style.marginLeft = "20px";
+    yesInfo.style.display = "none";
+
+    processingBar.style.display = 'none';
+    processingBar.innerText = "processing winner...";
+    processingBar.style.backgroundColor = 'red';
+
+
+    // gameEnd.style.display = "none";
+    userSideLeft.style.display = 'flex';
+
+    userSideLeftImage.innerHTML = " ";
+    
+    userSideLeftImage.style.display = 'none';
+    // gameSectionStartBeginner(); 
+    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
+    
 }
