@@ -1,44 +1,47 @@
-const btnAgreeYes = document.getElementById('btn-yes');
-const btnAgreeNo = document.getElementById('btn-no');
-const yesInfo = document.querySelector('.yes-info');
+import {
+    // btnAgreeYes,
+    btnAgreeNo,
+    yesInfo,
+    userName,
+    userGender,
+    userLevel,
+    yesBtn,
+    noName,
+    challengeUser,
+    challengeGender,
+    challengeLevel,
+    containerBrave,
+    anyChallengerHead,
+    braveBtn,
+    containerElementShow,
+    elementColumnContainer,
+    containerScore,
+    waitingForChallenger,
+    containerInputInteractions,
+    containerUserInfo,
+    gameStartSection,
+    gameStart,
+    btnGo,
+    userSelectElement,
+    userSide,
+    btnGoBackDiv,
+    cpuSideRender,
+    userSideLeft,
+    userSideLeftImage,
+    processingBar,
+    gameStartSectionIntermediate,
+    intermediateBtn,
+    emElement
+    
 
-const userName = document.getElementById('username');
-const userGender = document.getElementById('gender');
-const userLevel = document.getElementById('level');
-const yesBtn = document.getElementById('submit-user-info');
-const noName = document.getElementById('no-name');
+} from './declarations.js';
 
-let challengeUser = document.getElementById('challenge-user');
-let challengeGender = document.getElementById('challenge-gender');
-let challengeLevel = document.getElementById('challenge-level');
 
-const containerBrave = document.querySelector('.container-brave');
+import  {  } from './ready4challenge.js';
+import { userInfoChallenge } from './declarations.js'
 
-const anyChallengerHead = document.getElementById('h2');
-const braveBtn = document.querySelector('.brave-btn');
-const containerElementShow = document.querySelector('.container-element-show');
-const elementColumnContainer = document.querySelector('.element-column-container');
-const containerScore = document.querySelector('.container-score');
 
-const waitingForChallenger = document.getElementById('waiting');
 
-const containerInputInteractions = document.querySelector('.container-input-interactions');
-const containerUserInfo = document.querySelector('.container-user-info');
-
-const gameStartSection = document.querySelector('.game-start-section');
-const gameStart = document.querySelector('.game-start');
-
-const btnGo = document.getElementById('btn-go');
-const userSelectElement = document.getElementById('user-select-element');
-const userSide = document.querySelector('.user-side');
-const btnGoBackDiv = document.querySelector('.redo-btn');
-const showUserSide = document.querySelector('.show-user-side');
-const cpuSideRender = document.querySelector('.cpu-side');
-const userSideLeft = document.querySelector('.user-side-left');
-const userSideLeftImage = document.querySelector('.user-side-left-image');
-const processingBar = document.querySelector('.processing-bar');
-
-let userInfoChallenge = [];
 const rpsContainer = ["rock", "paper", "scissors"];
 
 
@@ -62,43 +65,43 @@ userName.addEventListener('focus', function () {
 })
 
 
-const btnClicked = $('.btn').click(function (e){
-    let btnID = e.target.id;
-    if(btnID === btnAgreeYes.id) {
-        userInfoChallenge = [];
-        emElement.style.display = "none";
-        btnReturnToFillForm();
-        console.log(userInfoChallenge);
-    }
-    else if (e.target.innerText === "Clear"){
-        userName.value = "";
-        userGender.value = "Male";
-        userLevel.value = "Beginner";
-        userInfoChallenge = [];
-            setTimeout(function(){
-                changeBackToNo();
-        }, 1000);
-    }
-    else {
-            waitingForChallenger.style.display = "none";
-            noName.style.display = "none";
-            yesInfo.style.display = "none";
-            // document.querySelector('.container-input-interactions').innerHTML = " ";
-            btnAgreeYes.style.visibility = "hidden";
-            emElement.style.display = "block";
+// const btnClicked = $('.btn').click(function (e){
+//     let btnID = e.target.id;
+//     if(btnID === btnAgreeYes.id) {
+//         userInfoChallenge = [];
+//         emElement.style.display = "none";
+//         btnReturnToFillForm();
+//         console.log(userInfoChallenge);
+//     }
+//     else if (e.target.innerText === "Clear"){
+//         userName.value = "";
+//         userGender.value = "Male";
+//         userLevel.value = "Beginner";
+//         userInfoChallenge = [];
+//             setTimeout(function(){
+//                 changeBackToNo();
+//         }, 1000);
+//     }
+//     else {
+//             waitingForChallenger.style.display = "none";
+//             noName.style.display = "none";
+//             yesInfo.style.display = "none";
+//             // document.querySelector('.container-input-interactions').innerHTML = " ";
+//             btnAgreeYes.style.visibility = "hidden";
+//             emElement.style.display = "block";
 
-            btnAgreeNo.addEventListener('mouseover', function() {
-                this.innerText = "No";
-                this.style.backgroundColor = "#a05656";
-            })
+//             btnAgreeNo.addEventListener('mouseover', function() {
+//                 this.innerText = "No";
+//                 this.style.backgroundColor = "#a05656";
+//             })
             
-            noBtnDetails();
-            userInfoChallenge = [];
-            setTimeout(function(){
-                btnAgreeYes.style.visibility = "visible";
-            },9000);
-        }    
-});
+//             noBtnDetails();
+//             userInfoChallenge = [];
+//             setTimeout(function(){
+//                 btnAgreeYes.style.visibility = "visible";
+//             },9000);
+//         }    
+// });
 
 function changeBackToNo(){
     btnAgreeNo.innerText = "No";
@@ -111,7 +114,7 @@ function changeNoBtnToClear() {
 }
 
 
-const emElement = document.createElement('em');
+
 let lafter;
 function noBtnDetails (){
     emElement.innerText = "Loading....";
@@ -152,7 +155,6 @@ yesBtn.addEventListener("click", function() {
         yesInfo.style.display = "none";
         noName.style.display = "block";
 
-    //    feedBackInfo("No name entered");
         break;
     default:
         userInfoChallenge.push({
@@ -168,6 +170,14 @@ yesBtn.addEventListener("click", function() {
     if(itemOFUserInfo.Level === "Beginner" && itemOFUserInfo.Username !== ""){
         beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
     }
+    else if(itemOFUserInfo.Level === "Intermediate" && itemOFUserInfo.Username !== ""){
+        beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
+    }
+    else if(itemOFUserInfo.Level === "Advanced" && itemOFUserInfo.Username !== ""){
+        beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
+    }
+
+
    })
 });
 
@@ -176,40 +186,10 @@ noName.addEventListener('click', function() {
     noName.style.display = "none";
 });
 
-// function feedBackInfo(infoHere){
-//     // document.querySelector('.container-input-interactions').innerHTML = " ";
 
-//     yesInfo.style.display = 'none';
-//     const newSpanElement = document.createElement('span');
-//     const newBtn = document.createElement('button');
-//     newSpanElement.innerText = infoHere;
-//     newSpanElement.style.fontWeight = '600';
-    
-//     newBtn.innerText = "Go Back";
-//     newBtn.style.padding = '5px 10px';
-//     newBtn.style.border = 'none';
-//     newBtn.style.backgroundColor = '#5cb45c';
-//     newBtn.style.color = '#fff';
-//     newBtn.style.cursor = 'pointer';
-//     newBtn.style.borderRadius = '5px';
-//     newBtn.style.fontSize = '1rem';
-//     newBtn.style.marginLeft = '5px';
-
-//     newBtn.addEventListener('mouseover', function() {
-//         this.style.backgroundColor = '#088f08';
-//         this.style.fontWeight = '600';
-//         this.style.transition = '0.3s ease-in-out';
-//     })
-
-//     newBtn.onclick = btnReturnToFillForm;
-//     newSpanElement.appendChild(newBtn);
-//     containerInputInteractions.appendChild(newSpanElement);
-// }
-
-function btnReturnToFillForm() {
+export function btnReturnToFillForm() {
     waitingForChallenger.style.display = "none";
     noName.style.display = "none";
-    // document.querySelector('.container-input-interactions').innerHTML = " ";
  
     yesInfo.style.display = "flex";
     yesInfo.style.flexDirection = "column"; 
@@ -218,9 +198,8 @@ function btnReturnToFillForm() {
     containerInputInteractions.appendChild(yesInfo);
 }
 
+
 function gameSectionStartBeginner(){
-    // document.querySelector('.container-element-show').innerHTML = " ";
-    // document.querySelector('.container-brave').innerHTML = " ";
     braveBtn.style.display = "none";
 
     anyChallengerHead.style.display = "none";
@@ -259,9 +238,27 @@ function gameSectionStartBeginner(){
 }
 
 function gameStartSectionRender(){
-    // document.querySelector('.container-input-interactions').innerHTML = " ";
+    userInfoChallenge.forEach((itemOFUserInfo) => {
+        if(itemOFUserInfo.Level === "Beginner"){
+            gameIntestineBeginner();
+        }
+        else if(itemOFUserInfo.Level === "Intermediate"){
+            gameIntestineIntermediate(); 
+            
+        }
+        else if(itemOFUserInfo.Level === "Advanced"){
+            const labelInstruction = document.getElementById('user-label-description');
+            labelInstruction.innerHTML = "Click to choose element: "
+            gameIntestineBeginner();
+        }
+    
+       })
+  
+}
+
+
+function gameIntestineBeginner(){
     containerInputInteractions.style.width= '96%';
-    // containerInputInteractions.style.margin= '0 auto';
    
     gameStartSection.style.display = 'block';
     gameStartSection.style.width = '90%';
@@ -278,9 +275,35 @@ function gameStartSectionRender(){
     cpuSideRender.style.padding = '10px 0';
     
     containerInputInteractions.appendChild(gameStartSection);
+
 }
 
+function gameIntestineIntermediate(){
+    containerInputInteractions.style.width= '96%';
+    
+    gameStartSectionIntermediate.style.display ="block";
+    gameStartSectionIntermediate.style.width ="90%";
+    gameStartSectionIntermediate.style.margin ="0 auto";
 
+    gameStart.style.display = 'flex';
+    gameStart.style.justifyContent = 'space-around';
+    gameStart.style.alignItems = 'center';
+
+    userSide.style.width = '50%';
+    userSide.style.padding = '10px 0';
+
+    cpuSideRender.style.width = '50%';
+    cpuSideRender.style.padding = '10px 0';
+    
+    containerInputInteractions.appendChild(gameStartSectionIntermediate);
+
+
+
+}
+
+intermediateBtn.addEventListener("click", function() {
+    gameStartsNow(rpsContainer[Math.floor(Math.random() * 3)]);
+});
 
 
 

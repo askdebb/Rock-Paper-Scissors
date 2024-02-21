@@ -255,7 +255,7 @@ footer {
     /* padding: 1rem 0; */
     background-color: #d6d4d4;
 }
-.game-start-section {
+.game-start-section, .game-start-section-intermediate {
     display: none;  
 }
 
@@ -269,11 +269,11 @@ footer {
 }
 
 
-.game-start {
+.game-start{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* width: 50%; */
+   
 }
 
 .user-side-left {
@@ -323,6 +323,17 @@ footer {
     font-weight: 600;
     background-color: #088f08;
     transition: 0.3s ease;
+}
+
+#intermediate-btn {
+    width: 8rem;
+    margin-top: 10px;
+    background-color: #5cb45c;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 3px;
 }
 
 .user-side-left-image {
