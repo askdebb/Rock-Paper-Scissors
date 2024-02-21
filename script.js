@@ -1,11 +1,8 @@
 import {
-    // btnAgreeYes,
-    btnAgreeNo,
     yesInfo,
     userName,
     userGender,
     userLevel,
-    yesBtn,
     noName,
     challengeUser,
     challengeGender,
@@ -13,7 +10,6 @@ import {
     containerBrave,
     anyChallengerHead,
     braveBtn,
-    containerElementShow,
     elementColumnContainer,
     containerScore,
     waitingForChallenger,
@@ -31,20 +27,29 @@ import {
     processingBar,
     gameStartSectionIntermediate,
     intermediateBtn,
-    emElement
+    userInfoChallenge,
+    rpsContainer,
+    roundCount,
+    roundCountMainRound,
+    roundCountMain
+  
     
 
 } from './declarations.js';
 
 
-import  {  } from './ready4challenge.js';
-import { userInfoChallenge } from './declarations.js'
+import  { changeBackToNo,
+          changeNoBtnToClear,         
+
+        } from './ready4challenge.js';
+
+import {
+    gameSectionStartBeginner,
+
+} from './beginnerLevel.js';
 
 
-
-const rpsContainer = ["rock", "paper", "scissors"];
-
-
+import { gameStartSectionRender } from './gameplay.js';
 
 
 userGender.addEventListener('click', function() {
@@ -64,122 +69,9 @@ userName.addEventListener('focus', function () {
     changeNoBtnToClear();
 })
 
-
-// const btnClicked = $('.btn').click(function (e){
-//     let btnID = e.target.id;
-//     if(btnID === btnAgreeYes.id) {
-//         userInfoChallenge = [];
-//         emElement.style.display = "none";
-//         btnReturnToFillForm();
-//         console.log(userInfoChallenge);
-//     }
-//     else if (e.target.innerText === "Clear"){
-//         userName.value = "";
-//         userGender.value = "Male";
-//         userLevel.value = "Beginner";
-//         userInfoChallenge = [];
-//             setTimeout(function(){
-//                 changeBackToNo();
-//         }, 1000);
-//     }
-//     else {
-//             waitingForChallenger.style.display = "none";
-//             noName.style.display = "none";
-//             yesInfo.style.display = "none";
-//             // document.querySelector('.container-input-interactions').innerHTML = " ";
-//             btnAgreeYes.style.visibility = "hidden";
-//             emElement.style.display = "block";
-
-//             btnAgreeNo.addEventListener('mouseover', function() {
-//                 this.innerText = "No";
-//                 this.style.backgroundColor = "#a05656";
-//             })
-            
-//             noBtnDetails();
-//             userInfoChallenge = [];
-//             setTimeout(function(){
-//                 btnAgreeYes.style.visibility = "visible";
-//             },9000);
-//         }    
-// });
-
-function changeBackToNo(){
-    btnAgreeNo.innerText = "No";
-    btnAgreeNo.style.backgroundColor = "#a05656";
-}
-
-function changeNoBtnToClear() {
-    btnAgreeNo.innerText = "Clear";
-    btnAgreeNo.style.backgroundColor = "#3A3A3A";
-}
-
-
-
-let lafter;
-function noBtnDetails (){
-    emElement.innerText = "Loading....";
-    emElement.style.color = '#fff';
-    soundControl();
-    containerInputInteractions.style.backgroundColor = '#F72201';
-    containerInputInteractions.appendChild(emElement);
-    }
    
     
-function soundControl(){
-        setTimeout(function (){
-            emElement.innerText = "Scared of me? Hahahaa!!   RUN!!!!!.......  🏃🏿🏃🏿🏃🏿";
-            soundPlay();
-        }, 1000);
-        setTimeout(function (){
-            emElement.innerText = "Don't you wanna compete with Chris?";
-            soundPlay();
-        }, 3000);
-}
 
-function soundPlay(){
-    lafter = new Audio("./sounds/laughter.mp3");
-    lafter.play();
-}
-
-
-// console.log(containerUserInfo);
-yesBtn.addEventListener("click", function() {
-    
-   let userNameReal = userName.value;
-   userNameReal = userNameReal.slice(0,1).toUpperCase() + userNameReal.slice(1,userNameReal.length).toLowerCase();
-   const userGenderReal = userGender.value;
-   const userLevelReal = userLevel.value;
-
-   switch (userNameReal) {
-    case '':
-        yesInfo.style.display = "none";
-        noName.style.display = "block";
-
-        break;
-    default:
-        userInfoChallenge.push({
-            Username: userNameReal,
-            Gender: userGenderReal,
-            Level: userLevelReal
-           })
-           gameSectionStartBeginner(); 
-        break;
-   }
-   console.log(userInfoChallenge);
-   userInfoChallenge.forEach((itemOFUserInfo) => {
-    if(itemOFUserInfo.Level === "Beginner" && itemOFUserInfo.Username !== ""){
-        beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
-    }
-    else if(itemOFUserInfo.Level === "Intermediate" && itemOFUserInfo.Username !== ""){
-        beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
-    }
-    else if(itemOFUserInfo.Level === "Advanced" && itemOFUserInfo.Username !== ""){
-        beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
-    }
-
-
-   })
-});
 
 noName.addEventListener('click', function() {
     yesInfo.style.display = "flex";
@@ -199,84 +91,12 @@ export function btnReturnToFillForm() {
 }
 
 
-function gameSectionStartBeginner(){
-    braveBtn.style.display = "none";
-
-    anyChallengerHead.style.display = "none";
-    waitingForChallenger.style.display = "none";
-    yesInfo.style.display = "none";
-    containerInputInteractions.style.width= '96%';
-
-    const divForGif = document.createElement('div');
-    divForGif.innerHTML = "<img src = './images/loading.gif' height='100%'/>";
-    containerInputInteractions.appendChild(divForGif);
-    
-    const beginnerSound = new Audio("./sounds/beginner.mp3");
-    beginnerSound.play();
-
-    
-    elementColumnContainer.style.display = "none";
-   
-    containerUserInfo.style.display = 'flex';
-    containerScore.style.display = 'flex';
-
-    containerUserInfo.style.justifyContent = 'space-around';
-    containerScore.style.justifyContent = 'space-around';
-
-    containerElementShow.style.display = 'block';
-    containerBrave.style.display = 'block';
-    containerBrave.style.padding = '0.5rem 0';
-   
-    containerBrave.appendChild(containerScore);
-    containerElementShow.appendChild(containerUserInfo);
-
-    setTimeout(function (){
-        divForGif.style.display = "none";
-        document.querySelector('body').style.backgroundColor = '#E5E5E5';
-        gameStartSectionRender();
-    }, 9000);
-}
-
-function gameStartSectionRender(){
-    userInfoChallenge.forEach((itemOFUserInfo) => {
-        if(itemOFUserInfo.Level === "Beginner"){
-            gameIntestineBeginner();
-        }
-        else if(itemOFUserInfo.Level === "Intermediate"){
-            gameIntestineIntermediate(); 
-            
-        }
-        else if(itemOFUserInfo.Level === "Advanced"){
-            const labelInstruction = document.getElementById('user-label-description');
-            labelInstruction.innerHTML = "Click to choose element: "
-            gameIntestineBeginner();
-        }
-    
-       })
-  
-}
 
 
-function gameIntestineBeginner(){
-    containerInputInteractions.style.width= '96%';
-   
-    gameStartSection.style.display = 'block';
-    gameStartSection.style.width = '90%';
-    gameStartSection.style.margin = '0 auto';
 
-    gameStart.style.display = 'flex';
-    gameStart.style.justifyContent = 'space-around';
-    gameStart.style.alignItems = 'center';
 
-    userSide.style.width = '50%';
-    userSide.style.padding = '10px 0';
 
-    cpuSideRender.style.width = '50%';
-    cpuSideRender.style.padding = '10px 0';
-    
-    containerInputInteractions.appendChild(gameStartSection);
 
-}
 
 function gameIntestineIntermediate(){
     containerInputInteractions.style.width= '96%';
@@ -308,23 +128,7 @@ intermediateBtn.addEventListener("click", function() {
 
 
 
-function beginnerChallenge (username, usergender, userlevel){
-   
-    const emUser = document.createElement('em');
-    emUser.innerText = username;
-    emUser.style.fontWeight = '600';
-    challengeUser.appendChild(emUser);
-    
-    const emGender = document.createElement('em');
-    emGender.innerText = usergender;
-    emGender.style.fontWeight = '600';
-    challengeGender.appendChild(emGender);
 
-    const emLevel = document.createElement('em');
-    emLevel.innerText = userlevel;
-    emLevel.style.fontWeight = '600';
-    challengeLevel.appendChild(emLevel);
-}
 
 btnGo.addEventListener('click', function() {
     
@@ -349,11 +153,7 @@ btnGoBackDiv.addEventListener('click', function() {
 });
 
 
-let userScore = document.getElementById('userScore');
-let cpuScore = document.getElementById('cpuScore');
-let roundCount = document.getElementById('round-count');
-let roundCountMainRound = document.querySelector('.round-count');
-let roundCountMain = document.querySelector('.round-count-main');
+
 
 let gameRunner = 2;
 
@@ -617,6 +417,7 @@ function restartGame(){
     userSideLeft.style.display = 'flex';
 
     userSideLeftImage.innerHTML = " ";
+    // userSelectElement.innerText = "Choose ...";
     
     userSideLeftImage.style.display = 'none';
     cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
@@ -634,9 +435,10 @@ function endGame(){
     roundCountMainRound.style.display = "flex";
     roundCountMain.style.display = "none";
 
-    userInfoChallenge = [];
+    userInfoChallenge.length = 0;
     gameEnd.style.display = "none";
 
+    // userSelectElement.innerText = "Choose ...";
     elementColumnContainer.style.display = "flex";
     containerUserInfo.style.display = "none";
 

@@ -39,6 +39,8 @@ export const userSideLeftImage = document.querySelector('.user-side-left-image')
 export const processingBar = document.querySelector('.processing-bar');
 
 export const emElement = document.createElement('em');
+export const rpsContainer = ["rock", "paper", "scissors"];
+// export let lafter;
 
 
 //intermediate level
@@ -46,3 +48,9 @@ export const gameStartSectionIntermediate = document.querySelector('.game-start-
 export const intermediateBtn = document.getElementById('intermediate-btn');
 
 export let userInfoChallenge = [];
+
+export let userScore = document.getElementById('userScore');
+export let cpuScore = document.getElementById('cpuScore');
+export let roundCount = document.getElementById('round-count');
+export let roundCountMainRound = document.querySelector('.round-count');
+export let roundCountMain = document.querySelector('.round-count-main');
