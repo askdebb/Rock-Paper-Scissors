@@ -276,13 +276,13 @@ footer {
    
 }
 
-.user-side-left {
+.user-side-left{
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.cpu-side{
+.cpu-side {
     padding: 20px 0;
     height: 100%;
 }

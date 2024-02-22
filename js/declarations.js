@@ -45,6 +45,12 @@ export const rpsContainer = ["rock", "paper", "scissors"];
 
 //intermediate level
 export const gameStartSectionIntermediate = document.querySelector('.game-start-section-intermediate');
+export const gameStartIntermediate = document.querySelector('.game-start-intermediate');
+export const userSideIntermediate = document.querySelector('.user-side-intermediate');
+export const userSideLeftIntermediate = document.querySelector('.user-side-left-intermediate');
+export const userSideLeftImageIntermediate = document.querySelector('.user-side-left-image-intermediate');
+export const cpuSideRenderIntermediate = document.querySelector('.cpu-side-intermediate');
+
 export const intermediateBtn = document.getElementById('intermediate-btn');
 
 export let userInfoChallenge = [];

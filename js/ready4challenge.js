@@ -1,6 +1,6 @@
 import { btnReturnToFillForm } from "./script.js";
 
-import { gameSectionStartBeginner } from "./beginnerLevel.js";
+import { gameSectionStartBeginner } from "./gameplay.js";
 
 import {btnAgreeNo,
         btnAgreeYes,

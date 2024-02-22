@@ -1,10 +1,11 @@
 import {intermediateBtn,
         containerInputInteractions,
         gameStartSectionIntermediate,
-        gameStart, 
-        userSide,
-        cpuSideRender,
+        gameStartIntermediate, 
+        userSideIntermediate,
+        cpuSideRenderIntermediate,
         rpsContainer,
+        
         
 
         } from "./declarations.js";
@@ -20,15 +21,16 @@ import { gameStartsNow } from "./gameplay.js";
     gameStartSectionIntermediate.style.width ="90%";
     gameStartSectionIntermediate.style.margin ="0 auto";
 
-    gameStart.style.display = 'flex';
-    gameStart.style.justifyContent = 'space-around';
-    gameStart.style.alignItems = 'center';
+    gameStartIntermediate.style.display = 'flex';
+    gameStartIntermediate.style.justifyContent = 'space-around';
+    gameStartIntermediate.style.alignItems = 'center';
+    gameStartIntermediate.style.alignItems = 'center';
 
-    userSide.style.width = '50%';
-    userSide.style.padding = '10px 0';
+    userSideIntermediate.style.width = '50%';
+    userSideIntermediate.style.padding = '10px 0';
 
-    cpuSideRender.style.width = '50%';
-    cpuSideRender.style.padding = '10px 0';
+    cpuSideRenderIntermediate.style.width = '50%';
+    cpuSideRenderIntermediate.style.padding = '10px 0';
     
     containerInputInteractions.appendChild(gameStartSectionIntermediate);
 
