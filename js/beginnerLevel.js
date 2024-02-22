@@ -15,7 +15,7 @@ import {braveBtn,
 
     } from "./declarations.js";
 
-import {gameStartSectionRender} from "./gameplay.js"
+import { gameStartSectionRender } from "./gameplay.js"
 
 export function gameSectionStartBeginner(){
     braveBtn.style.display = "none";

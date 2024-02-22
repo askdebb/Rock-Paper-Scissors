@@ -54,3 +54,6 @@ export let cpuScore = document.getElementById('cpuScore');
 export let roundCount = document.getElementById('round-count');
 export let roundCountMainRound = document.querySelector('.round-count');
 export let roundCountMain = document.querySelector('.round-count-main');
+// export let gameRunner = 2;
+
+export const gameEnd = document.querySelector('.game-end');

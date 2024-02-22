@@ -1,163 +1,64 @@
-import {
-    yesInfo,
-    userName,
-    userGender,
-    userLevel,
-    noName,
-    challengeUser,
-    challengeGender,
-    challengeLevel,
-    containerBrave,
-    anyChallengerHead,
-    braveBtn,
-    elementColumnContainer,
-    containerScore,
-    waitingForChallenger,
-    containerInputInteractions,
-    containerUserInfo,
-    gameStartSection,
-    gameStart,
-    btnGo,
-    userSelectElement,
-    userSide,
-    btnGoBackDiv,
-    cpuSideRender,
-    userSideLeft,
-    userSideLeftImage,
-    processingBar,
-    gameStartSectionIntermediate,
-    intermediateBtn,
-    userInfoChallenge,
-    rpsContainer,
-    roundCount,
-    roundCountMainRound,
-    roundCountMain
+import {userInfoChallenge,
+        userSideLeft,
+        userSideLeftImage,
+        rpsContainer,
+        cpuSideRender,
+        processingBar,
+        roundCountMainRound,
+        roundCount,
+        roundCountMain,
+        gameStart,
+        gameEnd,
+        elementColumnContainer,
+        containerUserInfo,
+        challengeUser,
+        challengeGender,
+        challengeLevel,
+        containerScore,
+        waitingForChallenger,
+        gameStartSection,
+        containerBrave,
+        braveBtn,
+        anyChallengerHead,
+        yesInfo,
+        
+
+       
+
+    } from "./declarations.js";
+
+import { gameIntestineBeginner, gameSectionStartBeginner } from "./beginnerLevel.js";
+import { gameIntestineIntermediate } from "./intermediateLevel.js";
+import { changeBackToNo } from "./ready4challenge.js";
+
+
+export function gameStartSectionRender(){
+    userInfoChallenge.forEach((itemOFUserInfo) => {
+
+        switch (itemOFUserInfo.Level) {
+            case "Beginner":
+                gameIntestineBeginner();
+                break;
+            case "Intermediate":
+                gameIntestineIntermediate(); 
+                break;
+            case "Advanced":
+                const labelInstruction = document.getElementById('user-label-description');
+                labelInstruction.innerHTML = "Click to choose element: "
+                gameIntestineBeginner();
+                break;
+        
+            default:
+                console.log("You choose sthg different");
+                break;
+        }
+    
+       });
   
-    
-
-} from './declarations.js';
-
-
-import  { changeBackToNo,
-          changeNoBtnToClear,         
-
-        } from './ready4challenge.js';
-
-import {
-    gameSectionStartBeginner,
-
-} from './beginnerLevel.js';
-
-
-import { gameStartSectionRender } from './gameplay.js';
-
-
-userGender.addEventListener('click', function() {
-    changeBackToNo();
-})
-userLevel.addEventListener('click', function() {
-    changeBackToNo();
-})
-
-userName.addEventListener("keyup", function() {
-    this.value = this.value.replace(/[^a-zA-Z ]+/,'');
-    changeNoBtnToClear();
-    
-})
-
-userName.addEventListener('focus', function () {
-    changeNoBtnToClear();
-})
-
-   
-    
-
-
-noName.addEventListener('click', function() {
-    yesInfo.style.display = "flex";
-    noName.style.display = "none";
-});
-
-
-export function btnReturnToFillForm() {
-    waitingForChallenger.style.display = "none";
-    noName.style.display = "none";
- 
-    yesInfo.style.display = "flex";
-    yesInfo.style.flexDirection = "column"; 
-    yesInfo.style.justifyContent = "space-between"; 
-    containerInputInteractions.style.backgroundColor = '#E5E5E5';
-    containerInputInteractions.appendChild(yesInfo);
 }
 
 
-
-
-
-
-
-
-
-function gameIntestineIntermediate(){
-    containerInputInteractions.style.width= '96%';
-    
-    gameStartSectionIntermediate.style.display ="block";
-    gameStartSectionIntermediate.style.width ="90%";
-    gameStartSectionIntermediate.style.margin ="0 auto";
-
-    gameStart.style.display = 'flex';
-    gameStart.style.justifyContent = 'space-around';
-    gameStart.style.alignItems = 'center';
-
-    userSide.style.width = '50%';
-    userSide.style.padding = '10px 0';
-
-    cpuSideRender.style.width = '50%';
-    cpuSideRender.style.padding = '10px 0';
-    
-    containerInputInteractions.appendChild(gameStartSectionIntermediate);
-
-
-
-}
-
-intermediateBtn.addEventListener("click", function() {
-    gameStartsNow(rpsContainer[Math.floor(Math.random() * 3)]);
-});
-
-
-
-
-
-
-btnGo.addEventListener('click', function() {
-    
-    if(userSelectElement.value === ""){
-        userSideLeft.style.display = 'none';
-        btnGoBackDiv.style.display = "block";
-        cpuSideRender.innerHTML = "<img src = './images/marry-runaway.png' />";
-        console.log("empty");
-    }
-    else {
-    
-            gameStartsNow(userSelectElement.value);
-    }
-
-});
-
-btnGoBackDiv.addEventListener('click', function() {
-    userSideLeft.style.display = 'flex';
-    gameStartSectionRender();
-    btnGoBackDiv.style.display = "none";
-    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
-});
-
-
-
-
-let gameRunner = 2;
-
-function gameStartsNow(userSelectValue) {
+export function gameStartsNow(userSelectValue) {
       
     userSideLeft.style.display = 'none';
     userSideLeftImage.style.display = 'inline';
@@ -275,36 +176,9 @@ function gameStartsNow(userSelectValue) {
     console.log("user select: "+userValue);
 }
 
-
-function userWinsEachRound(){
-    userInfoChallenge.forEach((userData) => {
-       const userNameData = userData.Username;
-       processingBar.innerText = userNameData + " wins!";
-    })
-    userScore.innerText++;
-    processingBar.style.backgroundColor = "green";
-
-        setTimeout(function() {
-            reStageGameNextRound();
-        },2000);
-   
-}
-
-function cpuWinsEachRound(){
-    processingBar.innerText = "CPU Mary Asare wins!";
-    cpuScore.innerText++;
-    processingBar.style.backgroundColor = "#daa520";
-  
-        setTimeout(function() {
-            reStageGameNextRound();
-        },2000);
-   
-    
-}
-
-const gameEnd = document.querySelector('.game-end');
-
+let gameRunner = 2;
 function reStageGameNextRound(){
+    
     if(gameRunner < 1){
         roundCountMainRound.style.display = 'none';
         roundCountMain.style.display = 'flex';
@@ -345,14 +219,40 @@ function reStageGameNextRound(){
         processingBar.innerText = 'processing winner...';
         processingBar.style.backgroundColor = 'red';
         roundCount.innerText++;
-        gameRunner--;
+        gameRunner --;
         console.log("game runner remains: "+gameRunner);
     } 
-}
 
+    
 console.log("now round: "+roundCount.innerText);
 console.log("game runner now: "+gameRunner);
+}
 
+export function userWinsEachRound(){
+    userInfoChallenge.forEach((userData) => {
+       const userNameData = userData.Username;
+       processingBar.innerText = userNameData + " wins!";
+    })
+    userScore.innerText++;
+    processingBar.style.backgroundColor = "green";
+
+        setTimeout(function() {
+            reStageGameNextRound();
+        },2000);
+   
+}
+
+export function cpuWinsEachRound(){
+    processingBar.innerText = "CPU Mary Asare wins!";
+    cpuScore.innerText++;
+    processingBar.style.backgroundColor = "#daa520";
+  
+        setTimeout(function() {
+            reStageGameNextRound();
+        },2000);
+   
+    
+}
 
 function gameEndStat(outcomeStat, backGroundColor){
     gameEnd.style.display = 'block';

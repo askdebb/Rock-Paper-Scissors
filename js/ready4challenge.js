@@ -1,24 +1,24 @@
-import {btnAgreeYes,
-        userInfoChallenge,
-        emElement,
-        btnAgreeNo,
-        waitingForChallenger,
-        noName,
-        yesInfo,
+import { btnReturnToFillForm } from "./script.js";
+
+import { gameSectionStartBeginner } from "./beginnerLevel.js";
+
+import {btnAgreeNo,
+        btnAgreeYes,
+        challengeGender,
+        challengeUser,
+        challengeLevel,
         containerInputInteractions,
+        emElement,
         userName,
         userGender,
         userLevel,
+        userInfoChallenge,
+        waitingForChallenger,
         yesBtn,
-        challengeUser,
-        challengeGender,
-        challengeLevel,
-       
+        yesInfo,
+        noName,
 
-    } from "./declarations.js";
-
-import { btnReturnToFillForm } from "./script.js";
-import { gameSectionStartBeginner } from "./beginnerLevel.js";
+} from "./declarations.js";
 
 
 
@@ -107,6 +107,7 @@ yesBtn.addEventListener("click", function() {
      case '':
          yesInfo.style.display = "none";
          noName.style.display = "block";
+         noName.style.marginBottom = "10px";
  
          break;
      default:
