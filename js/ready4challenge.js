@@ -148,7 +148,7 @@ yesBtn.addEventListener("click", function() {
      }
      else if(itemOFUserInfo.Level === "Intermediate" && itemOFUserInfo.Username !== ""){
          beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
-         document.querySelector('body').style.backgroundColor = "#B784B7";
+        //  document.querySelector('body').style.backgroundColor = "#661b70";
          intermediate.forEach((cpu) => {
             cpuchallengeDetails(cpu.nameCPU, cpu.genderCPU, cpu.levelCPU);
          })

@@ -18,15 +18,14 @@ import { gameStartsNowIntermediate } from "./gameplay.js";
 
 
  export function gameIntestineIntermediate(){
-    document.querySelector('body').style.backgroundColor = "#B784B7";
+    document.querySelector('body').style.backgroundColor = "#661b70";
 
     containerInputInteractions.style.width = '96%';
 
     containerBrave.style.margin = '3px 0';
     containerBrave.style.border = "2px solid #FC6736";
     containerBrave.style.borderRadius = "10px";
-    // containerScore.style.backgroundColor = "#FC6736";
-    // cpuScore.style.color = "#fff !important";
+
     cpuScore.style.fontWeight = "600";
     userScore.style.fontWeight = "600";
 

@@ -18,17 +18,17 @@ export function gameIntestineAdvanced(){
     document.querySelector('body').style.backgroundColor = "#643843";
 
     containerInputInteractions.style.width = '96%';
-    // containerInputInteractions.style.borderRadius = '15px';
+    
     containerInputInteractions.style.borderTopRightRadius = '10px';
     containerInputInteractions.style.borderTopLeftRadius = '10px';
    
     containerElementShow.style.borderBottomLeftRadius =  '10px';
     containerElementShow.style.borderBottomRightRadius =  '10px';
-    containerElementShow.style.transition = "0.5s ease";
+    
 
 
     containerBrave.style.margin = '15px 0';
-    containerBrave.style.border = "2px solid #FC6736";
+    containerBrave.style.border = "2px solid #F8FAE5";
     containerBrave.style.borderRadius = "10px";
 
     cpuScore.style.fontWeight = "600";

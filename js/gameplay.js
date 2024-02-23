@@ -458,7 +458,7 @@ function endGame(){
 
 // intermediate level gameplay
 export function gameStartsNowIntermediate(userSelectValue) {
-    document.querySelector('body').style.backgroundColor = "#B784B7";
+    document.querySelector('body').style.backgroundColor = "#661b70";
 
     userSideLeftIntermediate.style.display = 'none';
     userSideLeftImageIntermediate.style.display = 'inline';
@@ -577,7 +577,7 @@ export function gameStartsNowIntermediate(userSelectValue) {
 }
 
 function reStageGameNextRoundIntermediate(){
-    document.querySelector('body').style.backgroundColor = "#B784B7";
+    document.querySelector('body').style.backgroundColor = "#661b70";
 
     if(gameRunner < 1){
         roundCountMainRound.style.display = 'none';
@@ -599,7 +599,7 @@ function reStageGameNextRoundIntermediate(){
         } else if (userScore.innerText < cpuScore.innerText){
             intermediate.forEach((cpuData) => {
                 const intermediateUserNameData = cpuData.nameCPU;
-                gameEndStatIntermediate(intermediateUserNameData + " is the champion and you LOST!!",  '#946d09');
+                gameEndStatIntermediate(intermediateUserNameData + " is the champion and you LOST!!",  '#9B4444');
 
 
             })
@@ -721,7 +721,7 @@ function restartGameIntermediate(){
     processingBar.innerText = "processing winner...";
     processingBar.style.backgroundColor = 'red';
 
-    document.querySelector('body').style.backgroundColor = "#B784B7";
+    document.querySelector('body').style.backgroundColor = "#661b70";
 
     gameEndIntermediate.style.display = "none";
     userSideLeftIntermediate.style.display = 'flex';
@@ -798,10 +798,10 @@ function endGameIntermediate(){
 
 // advanced level gameplay
 export function gameStartsNowAdvanced(userSelectValue) {
-    document.querySelector('body').style.backgroundColor = "#B784B7";
+    document.querySelector('body').style.backgroundColor = "##643843";
 
     userSideLeftAdvanced.style.display = 'none';
-    userSideLeftImageIntermediate.style.display = 'inline';
+    userSideLeftImageAdvanced.style.display = 'inline';
 
     const imgUser = document.createElement('img');
     const userValue = "./images/" + userSelectValue + ".png";
@@ -836,6 +836,10 @@ export function gameStartsNowAdvanced(userSelectValue) {
         cpuSideRenderAdvanced.style.width = '20%';
         cpuSideRenderAdvanced.appendChild(imgCpu);
         processingBar.style.display = 'block';
+
+        processingBar.style.marginTop = "5px";
+        processingBar.style.marginBottom = "10px";
+        processingBar.style.borderRadius = "15px";
 
         if(cpuElement === 'rock'){
             const cpuRockSound = new Audio("./sounds/rock.mp3");
@@ -917,7 +921,7 @@ export function gameStartsNowAdvanced(userSelectValue) {
 }
 
 function reStageGameNextRoundAdvanced(){
-    document.querySelector('body').style.backgroundColor = "#B784B7";
+    document.querySelector('body').style.backgroundColor = "##643843";
 
     if(gameRunner < 1){
         roundCountMainRound.style.display = 'none';
@@ -932,20 +936,18 @@ function reStageGameNextRoundAdvanced(){
                 const userNameData = userData.Username;
                 gameEndStatAdvanced((userNameData + " is the champion!"), 'green');
              })
-            const userWinnerSound = new Audio("./sounds/intermediate-winner.mp3");
+            const userWinnerSound = new Audio("./sounds/advanced-win.mp3");
             userWinnerSound.play();
-            document.querySelector('body').style.backgroundColor = "#96E9C6";
+            document.querySelector('body').style.backgroundColor = "#92C7CF";
 
         } else if (userScore.innerText < cpuScore.innerText){
             advanced.forEach((cpuData) => {
                 const advancedUserNameData = cpuData.nameCPU;
-                gameEndStatAdvanced(advancedUserNameData + " is the champion and you LOST!!",  '#946d09');
-
-
+                gameEndStatAdvanced(advancedUserNameData + " is the champion and you LOST!!",  '#43766C');
             })
-            const cpuWinnerSound = new Audio("./sounds/ending-laughter_loser-intermediate.mp3");
+            const cpuWinnerSound = new Audio("./sounds/advanced-lost.mp3");
             cpuWinnerSound.play();
-            document.querySelector('body').style.backgroundColor = "#9B4444";
+            document.querySelector('body').style.backgroundColor = "#43766C";
 
         }
         else {
@@ -1061,7 +1063,7 @@ function restartGameAdvanced(){
     processingBar.innerText = "processing winner...";
     processingBar.style.backgroundColor = 'red';
 
-    document.querySelector('body').style.backgroundColor = "#B784B7";
+    document.querySelector('body').style.backgroundColor = "#643843";
 
     gameEndAdvanced.style.display = "none";
     userSideLeftAdvanced.style.display = 'flex';
@@ -1106,6 +1108,16 @@ function endGameAdvanced(){
 
     document.querySelector('footer').style.marginTop = "0";
 
+    containerElementShow.style.borderBottomLeftRadius =  '0';
+    containerElementShow.style.borderBottomRightRadius =  '0';
+
+    containerInputInteractions.style.borderTopRightRadius = '0';
+    containerInputInteractions.style.borderTopLeftRadius = '0';
+
+
+    processingBar.style.marginTop = "0";
+    processingBar.style.marginBottom = "0";
+    processingBar.style.borderRadius = "0";
 
     containerScore.style.display = "none";
     waitingForChallenger.style.display = "block";

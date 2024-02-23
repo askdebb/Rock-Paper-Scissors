@@ -330,7 +330,8 @@ footer {
 #intermediate-btn {
     width: 8rem;
     margin-top: 10px;
-    background-color: #5cb45c;
+    background-color: #830983;
+    /* background-color: #661b70; */
     color: #fff;
     cursor: pointer;
     border: none;
@@ -340,7 +341,7 @@ footer {
 #advanced-btn {
     width: 8rem;
     margin-top: 10px;
-    background-color: #5cb45c;
+    background-color: #643843;
     color: #fff;
     cursor: pointer;
     border: none;
@@ -417,7 +418,7 @@ footer {
     .nameUser label {
         margin-right: 55px;
     }
-    #user-label-description-intermediate {
+    #user-label-description-intermediate, #user-label-description-advanced {
         font-size: 90%;
     }
  }
@@ -440,7 +441,7 @@ footer {
         margin-left: 0;
     }
 
-    #user-label-description-intermediate {
+    #user-label-description-intermediate, #user-label-description-advanced {
         font-size: 80%;
     }
 
