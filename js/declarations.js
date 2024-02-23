@@ -40,18 +40,41 @@ export const processingBar = document.querySelector('.processing-bar');
 
 export const emElement = document.createElement('em');
 export const rpsContainer = ["rock", "paper", "scissors"];
-// export let lafter;
 
+export const cpuChallenger = [
+    {
+        nameCPU: "Mary Asare",
+        genderCPU: "Female",
+        levelCPU: "Beginner",
+    },
+    {
+        nameCPU: "Razak Kassim",
+        genderCPU: "Male",
+        levelCPU: "Intermediate",
+    },
+    {
+        nameCPU: "Chris CodeBOLT",
+        genderCPU: "Male",
+        levelCPU: "Advanced",
+    },
+]
 
 //intermediate level
+export let challengeUsernameCPU = document.getElementById('challenger-username-cpu');
+export let challengeGenderCPU = document.getElementById('challenger-usergender-cpu');
+export let challengeLevelCPU = document.getElementById('challenger-userlevel-cpu');
+
+
 export const gameStartSectionIntermediate = document.querySelector('.game-start-section-intermediate');
 export const gameStartIntermediate = document.querySelector('.game-start-intermediate');
 export const userSideIntermediate = document.querySelector('.user-side-intermediate');
 export const userSideLeftIntermediate = document.querySelector('.user-side-left-intermediate');
 export const userSideLeftImageIntermediate = document.querySelector('.user-side-left-image-intermediate');
 export const cpuSideRenderIntermediate = document.querySelector('.cpu-side-intermediate');
+export const gameEndIntermediate = document.querySelector('.game-end-intermediate');
 
 export const intermediateBtn = document.getElementById('intermediate-btn');
+
 
 export let userInfoChallenge = [];
 

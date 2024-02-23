@@ -10,7 +10,7 @@ import {intermediateBtn,
 
         } from "./declarations.js";
 
-import { gameStartsNow } from "./gameplay.js";
+import { gameStartsNowIntermediate } from "./gameplay.js";
 
 
 
@@ -39,5 +39,5 @@ import { gameStartsNow } from "./gameplay.js";
 }
 
  intermediateBtn.addEventListener("click", function() {
-    gameStartsNow(rpsContainer[Math.floor(Math.random() * 3)]);
+    gameStartsNowIntermediate(rpsContainer[Math.floor(Math.random() * 3)]);
 });

@@ -7,6 +7,9 @@ import {btnAgreeNo,
         challengeGender,
         challengeUser,
         challengeLevel,
+        challengeGenderCPU,
+        challengeUsernameCPU,
+        challengeLevelCPU,
         containerInputInteractions,
         emElement,
         userName,
@@ -17,6 +20,7 @@ import {btnAgreeNo,
         yesBtn,
         yesInfo,
         noName,
+        cpuChallenger,
 
 } from "./declarations.js";
 
@@ -96,6 +100,20 @@ const lafter = new Audio("./sounds/laughter.mp3");
 lafter.play();
 }
 
+function cpuChallengerInformation(level){
+    const dataCPU = cpuChallenger.filter((cpuDetails) => {
+        return cpuDetails.levelCPU === level;
+    });  
+    return dataCPU;
+}
+
+const beginner = cpuChallengerInformation("Beginner");
+const intermediate = cpuChallengerInformation("Intermediate");
+const advanced = cpuChallengerInformation("Advanced");
+
+
+
+
 yesBtn.addEventListener("click", function() {
     
     let userNameReal = userName.value;
@@ -123,12 +141,22 @@ yesBtn.addEventListener("click", function() {
     userInfoChallenge.forEach((itemOFUserInfo) => {
      if(itemOFUserInfo.Level === "Beginner" && itemOFUserInfo.Username !== ""){
          beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
+         beginner.forEach((cpu) => {
+            cpuchallengeDetails(cpu.nameCPU, cpu.genderCPU, cpu.levelCPU);
+         })
+         
      }
      else if(itemOFUserInfo.Level === "Intermediate" && itemOFUserInfo.Username !== ""){
          beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
+         intermediate.forEach((cpu) => {
+            cpuchallengeDetails(cpu.nameCPU, cpu.genderCPU, cpu.levelCPU);
+         })
      }
      else if(itemOFUserInfo.Level === "Advanced" && itemOFUserInfo.Username !== ""){
          beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
+         advanced.forEach((cpu) => {
+            cpuchallengeDetails(cpu.nameCPU, cpu.genderCPU, cpu.levelCPU);
+         })
      }
  
  
@@ -151,4 +179,23 @@ yesBtn.addEventListener("click", function() {
     emLevel.innerText = userlevel;
     emLevel.style.fontWeight = '600';
     challengeLevel.appendChild(emLevel);
+}
+
+
+function cpuchallengeDetails (usernameCPU, usergenderCPU, userlevelCPU){
+   
+    const emUserCPU = document.createElement('em');
+    emUserCPU.innerText = usernameCPU;
+    emUserCPU.style.fontWeight = '600';
+    challengeUsernameCPU.appendChild(emUserCPU);
+    
+    const emGenderCPU = document.createElement('em');
+    emGenderCPU.innerText = usergenderCPU;
+    emGenderCPU.style.fontWeight = '600';
+    challengeGenderCPU.appendChild(emGenderCPU);
+
+    const emLevelCPU = document.createElement('em');
+    emLevelCPU.innerText = userlevelCPU;
+    emLevelCPU.style.fontWeight = '600';
+    challengeLevelCPU.appendChild(emLevelCPU);
 }
