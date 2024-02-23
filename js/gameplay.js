@@ -310,7 +310,10 @@ export function userWinsEachRound(){
 }
 
 export function cpuWinsEachRound(){
-    processingBar.innerText = "CPU Mary Asare wins!";
+    beginner.forEach((cpuItemData) => {
+        const cpuName = cpuItemData.nameCPU;
+        processingBar.innerText = cpuName + " wins!";
+    })
     cpuScore.innerText++;
     processingBar.style.backgroundColor = "#daa520";
   
@@ -364,7 +367,7 @@ function gameEndStat(outcomeStat, backGroundColor){
         gameEnd.appendChild(btnRestartYes);
         gameEnd.appendChild(btnRestartNo);
 
-    },2000);
+    },4000);
 
 }
 
@@ -412,9 +415,11 @@ function endGame(){
     challengeUser.innerText = "";
     challengeGender.innerText = "";
     challengeLevel.innerText = "";
+
+    challengeUsernameCPU.innerText = "";
+    challengeGenderCPU.innerText = "";
+    challengeLevelCPU.innerText = "";
    
-
-
     containerScore.style.display = "none";
     waitingForChallenger.style.display = "block";
     gameStartSection.style.display = "none";
@@ -580,9 +585,9 @@ function reStageGameNextRoundIntermediate(){
                 const userNameData = userData.Username;
                 gameEndStatIntermediate((userNameData + " is the champion!"), 'green');
              })
-            const userWinnerSound = new Audio("./sounds/userwinner.mp3");
+            const userWinnerSound = new Audio("./sounds/intermediate-winner.mp3");
             userWinnerSound.play();
-            document.querySelector('body').style.backgroundColor = "#5dc7e7";
+            document.querySelector('body').style.backgroundColor = "#96E9C6";
 
         } else if (userScore.innerText < cpuScore.innerText){
             intermediate.forEach((cpuData) => {
@@ -636,9 +641,12 @@ export function userWinsEachRoundIntermediate(){
 }
 
 export function cpuWinsEachRoundIntermediate(){
-    processingBar.innerText = "CPU Mary Asare wins!";
+    intermediate.forEach((cpuDataInformationIntermediate) => {
+        const intermediateCpuData = cpuDataInformationIntermediate.nameCPU;
+        processingBar.innerText = intermediateCpuData + " wins!";
+    })
     cpuScore.innerText++;
-    processingBar.style.backgroundColor = "#daa520";
+    processingBar.style.backgroundColor = "#070F2B";
   
         setTimeout(function() {
             reStageGameNextRoundIntermediate();
@@ -691,7 +699,7 @@ function gameEndStatIntermediate(outcomeStat, backGroundColor){
         gameEndIntermediate.appendChild(btnRestartYes);
         gameEndIntermediate.appendChild(btnRestartNo);
 
-    },2000);
+    },4000);
 
 }
 
@@ -745,6 +753,11 @@ function endGameIntermediate(){
     challengeGenderCPU.innerText = "";
     challengeLevelCPU.innerText = "";
    
+    containerBrave.style.margin = '0';
+    containerBrave.style.border = "none";
+    containerBrave.style.borderRadius = "0";
+
+    document.querySelector('footer').style.marginTop = "0";
 
 
     containerScore.style.display = "none";
