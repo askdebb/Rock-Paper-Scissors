@@ -107,9 +107,9 @@ function cpuChallengerInformation(level){
     return dataCPU;
 }
 
-const beginner = cpuChallengerInformation("Beginner");
-const intermediate = cpuChallengerInformation("Intermediate");
-const advanced = cpuChallengerInformation("Advanced");
+export const beginner = cpuChallengerInformation("Beginner");
+export const intermediate = cpuChallengerInformation("Intermediate");
+export const advanced = cpuChallengerInformation("Advanced");
 
 
 
@@ -148,6 +148,7 @@ yesBtn.addEventListener("click", function() {
      }
      else if(itemOFUserInfo.Level === "Intermediate" && itemOFUserInfo.Username !== ""){
          beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);
+         document.querySelector('body').style.backgroundColor = "#B784B7";
          intermediate.forEach((cpu) => {
             cpuchallengeDetails(cpu.nameCPU, cpu.genderCPU, cpu.levelCPU);
          })

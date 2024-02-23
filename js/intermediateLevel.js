@@ -15,6 +15,8 @@ import { gameStartsNowIntermediate } from "./gameplay.js";
 
 
  export function gameIntestineIntermediate(){
+    document.querySelector('body').style.backgroundColor = "#B784B7";
+
     containerInputInteractions.style.width= '96%';
     
     gameStartSectionIntermediate.style.display ="block";

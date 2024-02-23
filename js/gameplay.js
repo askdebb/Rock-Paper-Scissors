@@ -28,15 +28,35 @@ import {userInfoChallenge,
         cpuSideRenderIntermediate,
         gameStartIntermediate,
         gameEndIntermediate,
+        challengeLevelCPU,
+        challengeUsernameCPU,
+        challengeGenderCPU,
+        gameStartSectionIntermediate
 
     } from "./declarations.js";
 
 import { gameIntestineBeginner } from "./beginnerLevel.js";
 import { gameIntestineIntermediate } from "./intermediateLevel.js";
-import { changeBackToNo } from "./ready4challenge.js";
+import { beginner, changeBackToNo, intermediate } from "./ready4challenge.js";
 
 
 export function gameSectionStartBeginner(){
+
+    userInfoChallenge.forEach((itemOFUserInfo) => {
+        if(itemOFUserInfo.Level === "Beginner"){
+           takeOver("beginner", 4000);  
+        }
+        else if(itemOFUserInfo.Level === "Intermediate"){
+            takeOver("intermediate", 10000);
+        }
+        else if(itemOFUserInfo.Level === "Advanced"){
+            takeOver("advanced");
+        }
+    })
+  
+}
+
+function takeOver(level, duration){
     braveBtn.style.display = "none";
 
     anyChallengerHead.style.display = "none";
@@ -48,7 +68,7 @@ export function gameSectionStartBeginner(){
     divForGif.innerHTML = "<img src = './images/loading.gif' height='100%'/>";
     containerInputInteractions.appendChild(divForGif);
     
-    const beginnerSound = new Audio("./sounds/beginner.mp3");
+    const beginnerSound = new Audio("./sounds/"+level+".mp3");
     beginnerSound.play();
 
     
@@ -71,7 +91,8 @@ export function gameSectionStartBeginner(){
         divForGif.style.display = "none";
         document.querySelector('body').style.backgroundColor = '#E5E5E5';
         gameStartSectionRender();
-    }, 9000);
+    }, duration);
+
 }
 
 export function gameStartSectionRender(){
@@ -240,8 +261,11 @@ function reStageGameNextRound(){
             document.querySelector('body').style.backgroundColor = "#5dc7e7";
 
         } else if (userScore.innerText < cpuScore.innerText){
-            gameEndStat("CPU Mary Asare is the champion and you LOST!!",  '#946d09');
-            const cpuWinnerSound = new Audio("./sounds/gameover-lost.mp3");
+            beginner.forEach((cpuData) => {
+                const cpuNameData = cpuData.nameCPU
+                gameEndStat(cpuNameData + " is the champion and you LOST!!",  '#946d09');
+            })
+            const cpuWinnerSound = new Audio("./sounds/ending-laughter_loser-beginner.mp3");
             cpuWinnerSound.play();
             document.querySelector('body').style.backgroundColor = "#800303";
 
@@ -422,7 +446,8 @@ function endGame(){
 
 // intermediate level gameplay
 export function gameStartsNowIntermediate(userSelectValue) {
-      
+    document.querySelector('body').style.backgroundColor = "#B784B7";
+
     userSideLeftIntermediate.style.display = 'none';
     userSideLeftImageIntermediate.style.display = 'inline';
 
@@ -559,10 +584,15 @@ function reStageGameNextRoundIntermediate(){
             document.querySelector('body').style.backgroundColor = "#5dc7e7";
 
         } else if (userScore.innerText < cpuScore.innerText){
-            gameEndStatIntermediate("CPU Mary Asare is the champion and you LOST!!",  '#946d09');
-            const cpuWinnerSound = new Audio("./sounds/gameover-lost.mp3");
+            intermediate.forEach((cpuData) => {
+                const intermediateUserNameData = cpuData.nameCPU;
+                gameEndStatIntermediate(intermediateUserNameData + " is the champion and you LOST!!",  '#946d09');
+
+
+            })
+            const cpuWinnerSound = new Audio("./sounds/ending-laughter_loser-intermediate.mp3");
             cpuWinnerSound.play();
-            document.querySelector('body').style.backgroundColor = "#800303";
+            document.querySelector('body').style.backgroundColor = "#9B4444";
 
         }
         else {
@@ -708,12 +738,16 @@ function endGameIntermediate(){
     challengeUser.innerText = "";
     challengeGender.innerText = "";
     challengeLevel.innerText = "";
+
+    challengeUsernameCPU.innerText = "";
+    challengeGenderCPU.innerText = "";
+    challengeLevelCPU.innerText = "";
    
 
 
     containerScore.style.display = "none";
     waitingForChallenger.style.display = "block";
-    gameStartSection.style.display = "none";
+    gameStartSectionIntermediate.style.display = "none";
 
     containerBrave.style.display = "flex";
     braveBtn.style.display = "block";
@@ -729,12 +763,12 @@ function endGameIntermediate(){
 
 
     // gameEnd.style.display = "none";
-    userSideLeft.style.display = 'flex';
+    userSideLeftIntermediate.style.display = 'flex';
 
-    userSideLeftImage.innerHTML = " ";
+    userSideLeftImageIntermediate.innerHTML = " ";
     
-    userSideLeftImage.style.display = 'none';
+    userSideLeftImageIntermediate.style.display = 'none';
     // gameSectionStartBeginner(); 
-    cpuSideRender.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
+    cpuSideRenderIntermediate.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
     changeBackToNo();
 }
