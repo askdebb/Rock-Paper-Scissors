@@ -6,7 +6,6 @@ import {intermediateBtn,
         cpuSideRenderIntermediate,
         rpsContainer,
         containerBrave,
-        containerScore,
         cpuScore,
         userScore,
         

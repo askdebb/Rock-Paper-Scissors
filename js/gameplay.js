@@ -31,13 +31,20 @@ import {userInfoChallenge,
         challengeLevelCPU,
         challengeUsernameCPU,
         challengeGenderCPU,
-        gameStartSectionIntermediate
+        gameStartSectionIntermediate,
+        userSideLeftAdvanced,
+        userSideLeftImageAdvanced,
+        cpuSideRenderAdvanced,
+        gameStartAdvanced,
+        gameEndAdvanced,
+        gameStartSectionAdvanced
 
     } from "./declarations.js";
 
 import { gameIntestineBeginner } from "./beginnerLevel.js";
 import { gameIntestineIntermediate } from "./intermediateLevel.js";
-import { beginner, changeBackToNo, intermediate } from "./ready4challenge.js";
+import { advanced, beginner, changeBackToNo, intermediate } from "./ready4challenge.js";
+import { gameIntestineAdvanced } from "./advancedLevel.js";
 
 
 export function gameSectionStartBeginner(){
@@ -50,7 +57,7 @@ export function gameSectionStartBeginner(){
             takeOver("intermediate", 10000);
         }
         else if(itemOFUserInfo.Level === "Advanced"){
-            takeOver("advanced");
+            takeOver("advanced", 9000);
         }
     })
   
@@ -108,7 +115,7 @@ export function gameStartSectionRender(){
             case "Advanced":
                 const labelInstruction = document.getElementById('user-label-description');
                 labelInstruction.innerHTML = "Click to choose element: "
-                gameIntestineBeginner();
+                gameIntestineAdvanced();
                 break;
         
             default:
@@ -785,5 +792,345 @@ function endGameIntermediate(){
     userSideLeftImageIntermediate.style.display = 'none';
     // gameSectionStartBeginner(); 
     cpuSideRenderIntermediate.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
+    changeBackToNo();
+}
+
+
+// advanced level gameplay
+export function gameStartsNowAdvanced(userSelectValue) {
+    document.querySelector('body').style.backgroundColor = "#B784B7";
+
+    userSideLeftAdvanced.style.display = 'none';
+    userSideLeftImageIntermediate.style.display = 'inline';
+
+    const imgUser = document.createElement('img');
+    const userValue = "./images/" + userSelectValue + ".png";
+    imgUser.src = userValue;
+    userSideLeftImageAdvanced.appendChild(imgUser);
+
+    if(userSelectValue === 'rock'){
+        const userRockSound = new Audio("./sounds/rock.mp3");
+        userRockSound.play();
+
+    } else if (userSelectValue === 'paper'){
+        const userPaperSound = new Audio("./sounds/paper.mp3");
+        userPaperSound.play();
+
+    }else {
+        const userScissorsSound = new Audio("./sounds/scissors.mp3");
+        userScissorsSound.play();
+
+    }
+
+    const cpuElement = rpsContainer[Math.floor(Math.random() * 3)];
+    const cpuSelect = "./images/" + cpuElement +".png";
+    const cpu = cpuSelect;  
+    cpuSideRenderAdvanced.innerHTML = "<img src = './images/thinking.png' width=100% height=100% />";
+
+    setTimeout(function() {
+        cpuSideRenderAdvanced.innerHTML = " ";
+        const imgCpu = document.createElement('img');
+        
+        imgCpu.src = cpu;
+        cpuSideRenderAdvanced.style.height = '20%';
+        cpuSideRenderAdvanced.style.width = '20%';
+        cpuSideRenderAdvanced.appendChild(imgCpu);
+        processingBar.style.display = 'block';
+
+        if(cpuElement === 'rock'){
+            const cpuRockSound = new Audio("./sounds/rock.mp3");
+            cpuRockSound.play();
+    
+        } else if (cpuElement === 'paper'){
+            const cpuPaperSound = new Audio("./sounds/paper.mp3");
+            cpuPaperSound.play();
+    
+        }else {
+            const cpuScissorsSound = new Audio("./sounds/scissors.mp3");
+            cpuScissorsSound.play();
+        }
+
+    }, 2000);
+    
+    
+    setTimeout(function() {
+        if((userSelectValue === 'rock' &&  cpuElement === 'rock') || (userSelectValue === 'paper' &&  cpuElement === 'paper') || (userSelectValue === 'scissors' &&  cpuElement === 'scissors')){
+            processingBar.innerText = "Draw";
+            processingBar.style.backgroundColor = "blue";
+            const drawSound = new Audio("./sounds/draw.mp3");
+            drawSound.play();
+            setTimeout(function() {
+                reStageGameNextRoundAdvanced();
+            },3000);
+        }
+        else if(userSelectValue === 'rock' &&  cpuElement === 'paper'){
+            const cpuWinsSound = new Audio("./sounds/paperfinal.mp3");
+            cpuWinsSound.play();
+            setTimeout(() => {
+                cpuWinsEachRoundAdvanced();
+            }, 6000);
+        }
+        else if(userSelectValue === 'paper' &&  cpuElement === 'scissors'){
+            const cpuWinsSound = new Audio("./sounds/scissorsfinal.mp3");
+            cpuWinsSound.play();
+            setTimeout(() => {
+                cpuWinsEachRoundAdvanced();
+            }, 5000);
+        }
+        else if(userSelectValue === 'scissors' &&  cpuElement === 'rock'){
+            const cpuWinsSound = new Audio("./sounds/rockfinal.mp3");
+            cpuWinsSound.play();
+            setTimeout(() => {
+                cpuWinsEachRoundAdvanced();
+            }, 6000);
+            
+        }
+        else if(userSelectValue === 'paper' &&  cpuElement === 'rock'){
+            const userWinsSound = new Audio("./sounds/paperfinal.mp3");
+            userWinsSound.play();
+            setTimeout(() => {
+                userWinsEachRoundAdvanced();
+            }, 6000);
+        }
+        else if(userSelectValue === 'scissors' &&  cpuElement === 'paper'){
+            const userWinsSound = new Audio("./sounds/scissorsfinal.mp3");
+            userWinsSound.play();
+            setTimeout(() => {
+                userWinsEachRoundAdvanced();
+            }, 5000);
+        }
+        else if(userSelectValue === 'rock' &&  cpuElement === 'scissors'){
+            const userWinsSound = new Audio("./sounds/rockfinal.mp3");
+            userWinsSound.play();
+            setTimeout(() => {
+                userWinsEachRoundAdvanced();
+            }, 6000);
+            
+        }
+
+    }, 5000);
+     
+    
+    
+    console.log("cpu select: " + cpu);
+    console.log("user select: "+userValue);
+}
+
+function reStageGameNextRoundAdvanced(){
+    document.querySelector('body').style.backgroundColor = "#B784B7";
+
+    if(gameRunner < 1){
+        roundCountMainRound.style.display = 'none';
+        roundCountMain.style.display = 'flex';
+        roundCountMain.innerText = "Game Over";
+        roundCountMain.style.color = "red";
+        roundCountMain.style.fontWeight = "600";
+        gameStartAdvanced.style.display = "none";
+        
+        if(userScore.innerText > cpuScore.innerText){
+            userInfoChallenge.forEach((userData) => {
+                const userNameData = userData.Username;
+                gameEndStatAdvanced((userNameData + " is the champion!"), 'green');
+             })
+            const userWinnerSound = new Audio("./sounds/intermediate-winner.mp3");
+            userWinnerSound.play();
+            document.querySelector('body').style.backgroundColor = "#96E9C6";
+
+        } else if (userScore.innerText < cpuScore.innerText){
+            advanced.forEach((cpuData) => {
+                const advancedUserNameData = cpuData.nameCPU;
+                gameEndStatAdvanced(advancedUserNameData + " is the champion and you LOST!!",  '#946d09');
+
+
+            })
+            const cpuWinnerSound = new Audio("./sounds/ending-laughter_loser-intermediate.mp3");
+            cpuWinnerSound.play();
+            document.querySelector('body').style.backgroundColor = "#9B4444";
+
+        }
+        else {
+            gameEndStatAdvanced("A tie!", "blue");
+            const noWinnerSound = new Audio("./sounds/tie.mp3");
+            noWinnerSound.play();
+        }
+
+    } else {
+        userSideLeftAdvanced.style.display = 'flex';
+        userSideLeftImageAdvanced.innerHTML = " ";
+        userSideLeftImageAdvanced.style.display = 'none';
+        gameStartSectionRender();
+        cpuSideRenderAdvanced.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
+        processingBar.style.display = 'none';
+        processingBar.innerText = 'processing winner...';
+        processingBar.style.backgroundColor = 'red';
+        roundCount.innerText++;
+        gameRunner --;
+        console.log("game runner remains: "+gameRunner);
+    } 
+
+    
+console.log("now round: "+roundCount.innerText);
+console.log("game runner now: "+gameRunner);
+}
+
+export function userWinsEachRoundAdvanced(){
+    userInfoChallenge.forEach((userData) => {
+       const userNameData = userData.Username;
+       processingBar.innerText = userNameData + " wins!";
+    })
+    userScore.innerText++;
+    processingBar.style.backgroundColor = "green";
+
+        setTimeout(function() {
+            reStageGameNextRoundAdvanced();
+        },2000);
+   
+}
+
+export function cpuWinsEachRoundAdvanced(){
+    advanced.forEach((cpuDataInformationAdvanced) => {
+        const advancedCpuData = cpuDataInformationAdvanced.nameCPU;
+        processingBar.innerText = advancedCpuData + " wins!";
+    })
+    cpuScore.innerText++;
+    processingBar.style.backgroundColor = "#070F2B";
+  
+        setTimeout(function() {
+            reStageGameNextRoundAdvanced();
+        },2000);
+   
+    
+}
+
+
+function gameEndStatAdvanced(outcomeStat, backGroundColor){
+    gameEndAdvanced.style.display = 'block';
+    gameEndAdvanced.innerText = outcomeStat;
+    gameEndAdvanced.style.backgroundColor = backGroundColor;
+    gameEndAdvanced.style.textAlign = "center";
+    gameEndAdvanced.style.color = '#fff';
+    processingBar.style.display = "none";
+
+    setTimeout(function(){
+        const btnRestartYes = document.createElement('button');
+        btnRestartYes.innerText = "Yes";
+        btnRestartYes.style.backgroundColor = "#fff";
+        btnRestartYes.style.color = backGroundColor;
+        btnRestartYes.style.padding = "5px 6px";
+        btnRestartYes.style.margin = "5px 15px";
+        btnRestartYes.onclick = restartGameAdvanced;
+        btnRestartYes.style.cursor = 'pointer';
+        btnRestartYes.style.border = 'none';
+        btnRestartYes.style.borderRadius = '3px';
+
+        const btnRestartNo = document.createElement('button');
+        btnRestartNo.innerText = 'No';
+        btnRestartNo.style.backgroundColor = "#fff";
+        btnRestartNo.style.color = 'red';
+        btnRestartNo.style.padding = "5px 6px";
+        btnRestartNo.style.margin = "5px 15px";
+        btnRestartNo.onclick = endGameAdvanced;
+        btnRestartNo.style.cursor = 'pointer';
+        btnRestartNo.style.border = 'none';
+        btnRestartNo.style.borderRadius = '3px';
+
+
+        btnRestartYes.addEventListener("mouseover", function(){
+            this.style.fontWeight = '600';
+        });
+        btnRestartNo.addEventListener("mouseover", function(){
+            this.style.fontWeight = '600';
+        });
+
+        gameEndAdvanced.innerText = "Restart?";
+        gameEndAdvanced.appendChild(btnRestartYes);
+        gameEndAdvanced.appendChild(btnRestartNo);
+
+    },4000);
+
+}
+
+function restartGameAdvanced(){
+    gameRunner = 2;
+    userScore.innerText= 0;
+    cpuScore.innerText= 0;
+    roundCount.innerText = 1;
+
+    roundCountMainRound.style.display = "flex";
+    roundCountMain.style.display = "none";
+    processingBar.innerText = "processing winner...";
+    processingBar.style.backgroundColor = 'red';
+
+    document.querySelector('body').style.backgroundColor = "#B784B7";
+
+    gameEndAdvanced.style.display = "none";
+    userSideLeftAdvanced.style.display = 'flex';
+
+    userSideLeftImageAdvanced.innerHTML = " ";
+    // userSelectElement.innerText = "Choose ...";
+    
+    userSideLeftImageAdvanced.style.display = 'none';
+    cpuSideRenderAdvanced.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
+    gameSectionStartBeginner(); 
+}
+
+function endGameAdvanced(){
+    document.querySelector('body').style.backgroundColor = '#E5E5E5';
+
+    gameRunner = 2;
+    userScore.innerText= 0;
+    cpuScore.innerText= 0;
+    roundCount.innerText = 1;
+
+    roundCountMainRound.style.display = "flex";
+    roundCountMain.style.display = "none";
+
+    userInfoChallenge.length = 0;
+    gameEndAdvanced.style.display = "none";
+
+    // userSelectElement.innerText = "Choose ...";
+    elementColumnContainer.style.display = "flex";
+    containerUserInfo.style.display = "none";
+
+    challengeUser.innerText = "";
+    challengeGender.innerText = "";
+    challengeLevel.innerText = "";
+
+    challengeUsernameCPU.innerText = "";
+    challengeGenderCPU.innerText = "";
+    challengeLevelCPU.innerText = "";
+   
+    containerBrave.style.margin = '0';
+    containerBrave.style.border = "none";
+    containerBrave.style.borderRadius = "0";
+
+    document.querySelector('footer').style.marginTop = "0";
+
+
+    containerScore.style.display = "none";
+    waitingForChallenger.style.display = "block";
+    gameStartSectionAdvanced.style.display = "none";
+
+    containerBrave.style.display = "flex";
+    braveBtn.style.display = "block";
+    anyChallengerHead.style.display = "block";
+
+    braveBtn.style.marginLeft = "20px";
+    anyChallengerHead.style.marginLeft = "20px";
+    yesInfo.style.display = "none";
+
+    processingBar.style.display = 'none';
+    processingBar.innerText = "processing winner...";
+    processingBar.style.backgroundColor = 'red';
+
+
+    // gameEnd.style.display = "none";
+    userSideLeftAdvanced.style.display = 'flex';
+
+    userSideLeftImageAdvanced.innerHTML = " ";
+    
+    userSideLeftImageAdvanced.style.display = 'none';
+    // gameSectionStartBeginner(); 
+    cpuSideRenderAdvanced.innerHTML = "<img src = './images/marry-waiting.png' width=100% height=100% />"; 
     changeBackToNo();
 }

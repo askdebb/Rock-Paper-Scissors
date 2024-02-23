@@ -255,7 +255,7 @@ footer {
     /* padding: 1rem 0; */
     background-color: #d6d4d4;
 }
-.game-start-section, .game-start-section-intermediate {
+.game-start-section, .game-start-section-intermediate, .game-start-section-advanced {
     display: none;  
 }
 
@@ -300,7 +300,9 @@ footer {
     font-style: italic;
 }
 
-#user-label-description {
+#user-label-description, 
+#user-label-description-intermediate, 
+#user-label-description-advanced {
     margin-bottom: 5px;
 }
 
@@ -335,6 +337,16 @@ footer {
     border-radius: 5px;
     padding: 5px 3px;
 }
+#advanced-btn {
+    width: 8rem;
+    margin-top: 10px;
+    background-color: #5cb45c;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 3px;
+}
 
 .user-side-left-image {
     display: none;
@@ -348,16 +360,20 @@ footer {
     display: none;
 }
 
-.cpu-side-intermediate img {
+.cpu-side-intermediate img, 
+.cpu-side-advanced img {
     width: 100%;
     height: 100%;
 }
 
-#user-label-description-intermediate {
+#user-label-description-intermediate, 
+#user-label-description-advanced  {
     font-size: 100%;
 }
 
-.user-side-left-intermediate {
+
+.user-side-left-intermediate, 
+.user-side-left-advanced {
     display: flex;
     flex-direction: column;
 }

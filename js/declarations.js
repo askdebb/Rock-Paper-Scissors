@@ -86,3 +86,18 @@ export let roundCountMain = document.querySelector('.round-count-main');
 // export let gameRunner = 2;
 
 export const gameEnd = document.querySelector('.game-end');
+
+
+
+//advanced level
+
+
+export const gameStartSectionAdvanced = document.querySelector('.game-start-section-advanced');
+export const gameStartAdvanced = document.querySelector('.game-start-advanced');
+export const userSideAdvanced = document.querySelector('.user-side-advanced');
+export const userSideLeftAdvanced = document.querySelector('.user-side-left-advanced');
+export const userSideLeftImageAdvanced = document.querySelector('.user-side-left-image-advanced');
+export const cpuSideRenderAdvanced = document.querySelector('.cpu-side-advanced');
+export const gameEndAdvanced = document.querySelector('.game-end-advanced');
+
+export const advancedBtn = document.getElementById('advanced-btn');
