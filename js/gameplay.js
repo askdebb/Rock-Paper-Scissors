@@ -565,7 +565,8 @@ export function gameStartsNowIntermediate(userSelectValue) {
 }
 
 function reStageGameNextRoundIntermediate(){
-    
+    document.querySelector('body').style.backgroundColor = "#B784B7";
+
     if(gameRunner < 1){
         roundCountMainRound.style.display = 'none';
         roundCountMain.style.display = 'flex';
@@ -705,7 +706,8 @@ function restartGameIntermediate(){
     processingBar.innerText = "processing winner...";
     processingBar.style.backgroundColor = 'red';
 
-    document.querySelector('body').style.backgroundColor = '#E5E5E5';
+    document.querySelector('body').style.backgroundColor = "#B784B7";
+
     gameEndIntermediate.style.display = "none";
     userSideLeftIntermediate.style.display = 'flex';
 
