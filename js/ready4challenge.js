@@ -32,7 +32,7 @@ export const btnClicked = $('.btn').click(function (e){
         userInfoChallenge.length = 0;
         emElement.style.display = "none";
         btnReturnToFillForm();
-        console.log(userInfoChallenge);
+        // console.log(userInfoChallenge);
     }
     else if (e.target.innerText === "Clear"){
         userName.value = "";
@@ -137,7 +137,7 @@ yesBtn.addEventListener("click", function() {
             gameSectionStartBeginner(); 
          break;
     }
-    console.log(userInfoChallenge);
+    // console.log(userInfoChallenge);
     userInfoChallenge.forEach((itemOFUserInfo) => {
      if(itemOFUserInfo.Level === "Beginner" && itemOFUserInfo.Username !== ""){
          beginnerChallenge(itemOFUserInfo.Username, itemOFUserInfo.Gender, itemOFUserInfo.Level);

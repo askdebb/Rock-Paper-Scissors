@@ -338,6 +338,9 @@ function gameEndStat(outcomeStat, backGroundColor){
     gameEnd.style.backgroundColor = backGroundColor;
     gameEnd.style.textAlign = "center";
     gameEnd.style.color = '#fff';
+    gameEnd.style.padding = '5px 10px';
+    gameEnd.style.borderRadius = '5px';
+    
     processingBar.style.display = "none";
 
     setTimeout(function(){
@@ -670,6 +673,8 @@ function gameEndStatIntermediate(outcomeStat, backGroundColor){
     gameEndIntermediate.style.backgroundColor = backGroundColor;
     gameEndIntermediate.style.textAlign = "center";
     gameEndIntermediate.style.color = '#fff';
+    gameEndIntermediate.style.padding = "5px 10px";
+    gameEndIntermediate.style.borderRadius = "4px";
     processingBar.style.display = "none";
 
     setTimeout(function(){
@@ -802,10 +807,10 @@ function endGameIntermediate(){
 
 advancedBtn.addEventListener("click", function() {
     let magicNumber = Math.floor(Math.random() * 3);
-    console.log("magic number for user to use is: "+ magicNumber);
-    // function gameStartsNowAdvanced(userSelectValue) {
+    // console.log("magic number for user to use is: "+ magicNumber);
+    
         let userSelectValue = rpsContainer[magicNumber];
-        console.log("value of magic number is: "+userSelectValue);
+        // console.log("value of magic number is: "+userSelectValue);
         document.querySelector('body').style.backgroundColor = "##643843";
     
         userSideLeftAdvanced.style.display = 'none';
@@ -835,7 +840,7 @@ advancedBtn.addEventListener("click", function() {
                 const cpuElement = rpsContainer[1];
                 const cpuSelect = "./images/" + cpuElement +".png";
                 // const cpu = cpuSelect;  
-                console.log("cpu attack: "+cpuElement)
+                // console.log("cpu attack: "+cpuElement)
                 cpuSideRenderAdvanced.innerHTML = "<img src = './images/thinking.png' width=100% height=100% />";
     
                 setTimeout(function() {
@@ -935,7 +940,7 @@ advancedBtn.addEventListener("click", function() {
                 const cpuElement1 = rpsContainer[2];
                 const cpuSelect1 = "./images/" + cpuElement1 +".png";
                 // const cpu = cpuSelect;  
-                console.log("cpu attack: "+cpuElement1)
+                // console.log("cpu attack: "+cpuElement1)
                 cpuSideRenderAdvanced.innerHTML = "<img src = './images/thinking.png' width=100% height=100% />";
     
                 setTimeout(function() {
@@ -1035,7 +1040,7 @@ advancedBtn.addEventListener("click", function() {
                 const cpuElement2 = rpsContainer[0];
                 const cpuSelect2 = "./images/" + cpuElement2 +".png";
                 // const cpu = cpuSelect;  
-                console.log("cpu attack: "+cpuElement2)
+                // console.log("cpu attack: "+cpuElement2)
                 cpuSideRenderAdvanced.innerHTML = "<img src = './images/thinking.png' width=100% height=100% />";
     
                 setTimeout(function() {
@@ -1136,35 +1141,8 @@ advancedBtn.addEventListener("click", function() {
                 console.log("nothing here")
                 break;
         }
-    
-        // if(mNumber === "0"){
-        //     return "1"
-        // }
-        // else if(mNumber === "1"){
-        //     return "2"
-        // }
-        // if(mNumber === "2"){
-        //     return "0"
-        // }
-        
-    
-       
-         
-    
-        
-        // console.log("cpu select: " + cpuSelect);
-        // console.log("user select: "+userValue);
-    
-    // gameStartsNowAdvanced(rpsContainer[magicNumber]); 
-    // console.log("killer number element: "+rpsContainer[magicNumber])   
+  
 });
-
-
-
-
-// console.log("magic number is: "+magicNumber);
-
-
 
 
 function reStageGameNextRoundAdvanced(){
@@ -1216,10 +1194,6 @@ function reStageGameNextRoundAdvanced(){
         gameRunner --;
         // console.log("game runner remains: "+gameRunner);
     } 
-
-    
-// console.log("now round: "+roundCount.innerText);
-// console.log("game runner now: "+gameRunner);
 }
 
 export function userWinsEachRoundAdvanced(){
@@ -1258,7 +1232,10 @@ function gameEndStatAdvanced(outcomeStat, backGroundColor){
     gameEndAdvanced.style.backgroundColor = backGroundColor;
     gameEndAdvanced.style.textAlign = "center";
     gameEndAdvanced.style.color = '#fff';
+    gameEndAdvanced.style.padding = "5px 10px";
+    gameEndAdvanced.style.borderRadius = "4px";
     processingBar.style.display = "none";
+
 
     setTimeout(function(){
         const btnRestartYes = document.createElement('button');

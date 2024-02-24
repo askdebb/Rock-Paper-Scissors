@@ -1,5 +1,4 @@
 import { 
-    // advancedBtn, 
         cpuSideRenderAdvanced, 
         gameStartAdvanced, 
         gameStartSectionAdvanced, 
@@ -8,12 +7,9 @@ import {
         containerBrave,
         cpuScore,
         userScore,
-        rpsContainer,
         containerElementShow
     
     } from "./declarations.js";
-// import { gameStartsNowAdvanced } from "./gameplay.js";
-
 
 export function gameIntestineAdvanced(){
     document.querySelector('body').style.backgroundColor = "#643843";
