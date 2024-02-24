@@ -1,4 +1,5 @@
-import { advancedBtn, 
+import { 
+    // advancedBtn, 
         cpuSideRenderAdvanced, 
         gameStartAdvanced, 
         gameStartSectionAdvanced, 
@@ -11,7 +12,7 @@ import { advancedBtn,
         containerElementShow
     
     } from "./declarations.js";
-import { gameStartsNowAdvanced } from "./gameplay.js";
+// import { gameStartsNowAdvanced } from "./gameplay.js";
 
 
 export function gameIntestineAdvanced(){
@@ -60,7 +61,3 @@ export function gameIntestineAdvanced(){
 
 
 }
-
- advancedBtn.addEventListener("click", function() {
-    gameStartsNowAdvanced(rpsContainer[Math.floor(Math.random() * 3)]);
-});

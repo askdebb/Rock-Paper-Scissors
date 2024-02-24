@@ -37,7 +37,8 @@ import {userInfoChallenge,
         cpuSideRenderAdvanced,
         gameStartAdvanced,
         gameEndAdvanced,
-        gameStartSectionAdvanced
+        gameStartSectionAdvanced,
+        advancedBtn
 
     } from "./declarations.js";
 
@@ -242,8 +243,8 @@ export function gameStartsNow(userSelectValue) {
      
     
     
-    console.log("cpu select: " + cpu);
-    console.log("user select: "+userValue);
+    // console.log("cpu select: " + cpu);
+    // console.log("user select: "+userValue);
 }
 
 
@@ -294,12 +295,12 @@ function reStageGameNextRound(){
         processingBar.style.backgroundColor = 'red';
         roundCount.innerText++;
         gameRunner --;
-        console.log("game runner remains: "+gameRunner);
+        // console.log("game runner remains: "+gameRunner);
     } 
 
     
-console.log("now round: "+roundCount.innerText);
-console.log("game runner now: "+gameRunner);
+// console.log("now round: "+roundCount.innerText);
+// console.log("game runner now: "+gameRunner);
 }
 
 export function userWinsEachRound(){
@@ -572,8 +573,8 @@ export function gameStartsNowIntermediate(userSelectValue) {
      
     
     
-    console.log("cpu select: " + cpu);
-    console.log("user select: "+userValue);
+    // console.log("cpu select: " + cpu);
+    // console.log("user select: "+userValue);
 }
 
 function reStageGameNextRoundIntermediate(){
@@ -625,12 +626,12 @@ function reStageGameNextRoundIntermediate(){
         processingBar.style.backgroundColor = 'red';
         roundCount.innerText++;
         gameRunner --;
-        console.log("game runner remains: "+gameRunner);
+        // console.log("game runner remains: "+gameRunner);
     } 
 
     
-console.log("now round: "+roundCount.innerText);
-console.log("game runner now: "+gameRunner);
+// console.log("now round: "+roundCount.innerText);
+// console.log("game runner now: "+gameRunner);
 }
 
 export function userWinsEachRoundIntermediate(){
@@ -796,129 +797,375 @@ function endGameIntermediate(){
 }
 
 
+
 // advanced level gameplay
-export function gameStartsNowAdvanced(userSelectValue) {
-    document.querySelector('body').style.backgroundColor = "##643843";
 
-    userSideLeftAdvanced.style.display = 'none';
-    userSideLeftImageAdvanced.style.display = 'inline';
-
-    const imgUser = document.createElement('img');
-    const userValue = "./images/" + userSelectValue + ".png";
-    imgUser.src = userValue;
-    userSideLeftImageAdvanced.appendChild(imgUser);
-
-    if(userSelectValue === 'rock'){
-        const userRockSound = new Audio("./sounds/rock.mp3");
-        userRockSound.play();
-
-    } else if (userSelectValue === 'paper'){
-        const userPaperSound = new Audio("./sounds/paper.mp3");
-        userPaperSound.play();
-
-    }else {
-        const userScissorsSound = new Audio("./sounds/scissors.mp3");
-        userScissorsSound.play();
-
-    }
-
-    const cpuElement = rpsContainer[Math.floor(Math.random() * 3)];
-    const cpuSelect = "./images/" + cpuElement +".png";
-    const cpu = cpuSelect;  
-    cpuSideRenderAdvanced.innerHTML = "<img src = './images/thinking.png' width=100% height=100% />";
-
-    setTimeout(function() {
-        cpuSideRenderAdvanced.innerHTML = " ";
-        const imgCpu = document.createElement('img');
-        
-        imgCpu.src = cpu;
-        cpuSideRenderAdvanced.style.height = '20%';
-        cpuSideRenderAdvanced.style.width = '20%';
-        cpuSideRenderAdvanced.appendChild(imgCpu);
-        processingBar.style.display = 'block';
-
-        processingBar.style.marginTop = "5px";
-        processingBar.style.marginBottom = "10px";
-        processingBar.style.borderRadius = "15px";
-
-        if(cpuElement === 'rock'){
-            const cpuRockSound = new Audio("./sounds/rock.mp3");
-            cpuRockSound.play();
+advancedBtn.addEventListener("click", function() {
+    let magicNumber = Math.floor(Math.random() * 3);
+    console.log("magic number for user to use is: "+ magicNumber);
+    // function gameStartsNowAdvanced(userSelectValue) {
+        let userSelectValue = rpsContainer[magicNumber];
+        console.log("value of magic number is: "+userSelectValue);
+        document.querySelector('body').style.backgroundColor = "##643843";
     
-        } else if (cpuElement === 'paper'){
-            const cpuPaperSound = new Audio("./sounds/paper.mp3");
-            cpuPaperSound.play();
+        userSideLeftAdvanced.style.display = 'none';
+        userSideLeftImageAdvanced.style.display = 'inline';
+    
+        const imgUser = document.createElement('img');
+        const userValue = "./images/" + userSelectValue + ".png";
+        imgUser.src = userValue;
+        userSideLeftImageAdvanced.appendChild(imgUser);
+    
+        if(userSelectValue === 'rock'){
+            const userRockSound = new Audio("./sounds/rock.mp3");
+            userRockSound.play();
+    
+        } else if (userSelectValue === 'paper'){
+            const userPaperSound = new Audio("./sounds/paper.mp3");
+            userPaperSound.play();
     
         }else {
-            const cpuScissorsSound = new Audio("./sounds/scissors.mp3");
-            cpuScissorsSound.play();
-        }
-
-    }, 2000);
+            const userScissorsSound = new Audio("./sounds/scissors.mp3");
+            userScissorsSound.play();
     
+        }
     
-    setTimeout(function() {
-        if((userSelectValue === 'rock' &&  cpuElement === 'rock') || (userSelectValue === 'paper' &&  cpuElement === 'paper') || (userSelectValue === 'scissors' &&  cpuElement === 'scissors')){
-            processingBar.innerText = "Draw";
-            processingBar.style.backgroundColor = "blue";
-            const drawSound = new Audio("./sounds/draw.mp3");
-            drawSound.play();
-            setTimeout(function() {
-                reStageGameNextRoundAdvanced();
-            },3000);
-        }
-        else if(userSelectValue === 'rock' &&  cpuElement === 'paper'){
-            const cpuWinsSound = new Audio("./sounds/paperfinal.mp3");
-            cpuWinsSound.play();
-            setTimeout(() => {
-                cpuWinsEachRoundAdvanced();
-            }, 6000);
-        }
-        else if(userSelectValue === 'paper' &&  cpuElement === 'scissors'){
-            const cpuWinsSound = new Audio("./sounds/scissorsfinal.mp3");
-            cpuWinsSound.play();
-            setTimeout(() => {
-                cpuWinsEachRoundAdvanced();
-            }, 5000);
-        }
-        else if(userSelectValue === 'scissors' &&  cpuElement === 'rock'){
-            const cpuWinsSound = new Audio("./sounds/rockfinal.mp3");
-            cpuWinsSound.play();
-            setTimeout(() => {
-                cpuWinsEachRoundAdvanced();
-            }, 6000);
+        switch (magicNumber) {
+            case 0:
+                const cpuElement = rpsContainer[1];
+                const cpuSelect = "./images/" + cpuElement +".png";
+                // const cpu = cpuSelect;  
+                console.log("cpu attack: "+cpuElement)
+                cpuSideRenderAdvanced.innerHTML = "<img src = './images/thinking.png' width=100% height=100% />";
+    
+                setTimeout(function() {
             
-        }
-        else if(userSelectValue === 'paper' &&  cpuElement === 'rock'){
-            const userWinsSound = new Audio("./sounds/paperfinal.mp3");
-            userWinsSound.play();
-            setTimeout(() => {
-                userWinsEachRoundAdvanced();
-            }, 6000);
-        }
-        else if(userSelectValue === 'scissors' &&  cpuElement === 'paper'){
-            const userWinsSound = new Audio("./sounds/scissorsfinal.mp3");
-            userWinsSound.play();
-            setTimeout(() => {
-                userWinsEachRoundAdvanced();
-            }, 5000);
-        }
-        else if(userSelectValue === 'rock' &&  cpuElement === 'scissors'){
-            const userWinsSound = new Audio("./sounds/rockfinal.mp3");
-            userWinsSound.play();
-            setTimeout(() => {
-                userWinsEachRoundAdvanced();
-            }, 6000);
+                    cpuSideRenderAdvanced.innerHTML = " ";
             
+                    const imgCpu = document.createElement('img');
+                    
+                    imgCpu.src = cpuSelect;
+                    cpuSideRenderAdvanced.appendChild(imgCpu);
+                    
+                    cpuSideRenderAdvanced.style.height = '20%';
+                    cpuSideRenderAdvanced.style.width = '20%';
+                    
+                    processingBar.style.display = 'block';
+            
+                    processingBar.style.marginTop = "5px";
+                    processingBar.style.marginBottom = "10px";
+                    processingBar.style.borderRadius = "15px";
+            
+            
+            
+                    if(cpuElement === 'rock'){
+                        const cpuRockSound = new Audio("./sounds/rock.mp3");
+                        cpuRockSound.play();
+                
+                    } else if (cpuElement === 'paper'){
+                        const cpuPaperSound = new Audio("./sounds/paper.mp3");
+                        cpuPaperSound.play();
+                
+                    }else {
+                        const cpuScissorsSound = new Audio("./sounds/scissors.mp3");
+                        cpuScissorsSound.play();
+                    }
+            
+                }, 4000);  
+                
+                setTimeout(function() {
+                    if((userSelectValue === 'rock' && cpuElement === 'rock') || (userSelectValue === 'paper' && cpuElement === 'paper') || (userSelectValue === 'scissors' &&  cpuElement === 'scissors')){
+                        processingBar.innerText = "Draw";
+                        processingBar.style.backgroundColor = "blue";
+                        const drawSound = new Audio("./sounds/draw.mp3");
+                        drawSound.play();
+                        setTimeout(function() {
+                            reStageGameNextRoundAdvanced();
+                        },3000);
+                    }
+                    else if(userSelectValue === 'rock' &&  cpuElement === 'paper'){
+                        const cpuWinsSound = new Audio("./sounds/paperfinal.mp3");
+                        cpuWinsSound.play();
+                        setTimeout(() => {
+                            cpuWinsEachRoundAdvanced();
+                        }, 6000);
+                    }
+                    else if(userSelectValue === 'paper' &&  cpuElement === 'scissors'){
+                        const cpuWinsSound = new Audio("./sounds/scissorsfinal.mp3");
+                        cpuWinsSound.play();
+                        setTimeout(() => {
+                            cpuWinsEachRoundAdvanced();
+                        }, 5000);
+                    }
+                    else if(userSelectValue === 'scissors' &&  cpuElement === 'rock'){
+                        const cpuWinsSound = new Audio("./sounds/rockfinal.mp3");
+                        cpuWinsSound.play();
+                        setTimeout(() => {
+                            cpuWinsEachRoundAdvanced();
+                        }, 6000);
+                        
+                    }
+                    else if(userSelectValue === 'paper' &&  cpuElement === 'rock'){
+                        const userWinsSound = new Audio("./sounds/paperfinal.mp3");
+                        userWinsSound.play();
+                        setTimeout(() => {
+                            userWinsEachRoundAdvanced();
+                        }, 6000);
+                    }
+                    else if(userSelectValue === 'scissors' &&  cpuElement === 'paper'){
+                        const userWinsSound = new Audio("./sounds/scissorsfinal.mp3");
+                        userWinsSound.play();
+                        setTimeout(() => {
+                            userWinsEachRoundAdvanced();
+                        }, 5000);
+                    }
+                    else if(userSelectValue === 'rock' &&  cpuElement === 'scissors'){
+                        const userWinsSound = new Audio("./sounds/rockfinal.mp3");
+                        userWinsSound.play();
+                        setTimeout(() => {
+                            userWinsEachRoundAdvanced();
+                        }, 6000);
+                        
+                    }
+            
+                }, 5000);
+                
+                break;
+            case 1:
+                const cpuElement1 = rpsContainer[2];
+                const cpuSelect1 = "./images/" + cpuElement1 +".png";
+                // const cpu = cpuSelect;  
+                console.log("cpu attack: "+cpuElement1)
+                cpuSideRenderAdvanced.innerHTML = "<img src = './images/thinking.png' width=100% height=100% />";
+    
+                setTimeout(function() {
+            
+                    cpuSideRenderAdvanced.innerHTML = " ";
+            
+                    const imgCpu = document.createElement('img');
+                    
+                    imgCpu.src = cpuSelect1;
+                    cpuSideRenderAdvanced.appendChild(imgCpu);
+                    
+                    cpuSideRenderAdvanced.style.height = '20%';
+                    cpuSideRenderAdvanced.style.width = '20%';
+                    
+                    processingBar.style.display = 'block';
+            
+                    processingBar.style.marginTop = "5px";
+                    processingBar.style.marginBottom = "10px";
+                    processingBar.style.borderRadius = "15px";
+            
+            
+            
+                    if(cpuElement1 === 'rock'){
+                        const cpuRockSound = new Audio("./sounds/rock.mp3");
+                        cpuRockSound.play();
+                
+                    } else if (cpuElement1 === 'paper'){
+                        const cpuPaperSound = new Audio("./sounds/paper.mp3");
+                        cpuPaperSound.play();
+                
+                    }else {
+                        const cpuScissorsSound = new Audio("./sounds/scissors.mp3");
+                        cpuScissorsSound.play();
+                    }
+            
+                }, 4000);  
+                
+                setTimeout(function() {
+                    if((userSelectValue === 'rock' && cpuElement1 === 'rock') || (userSelectValue === 'paper' && cpuElement1 === 'paper') || (userSelectValue === 'scissors' &&  cpuElement1 === 'scissors')){
+                        processingBar.innerText = "Draw";
+                        processingBar.style.backgroundColor = "blue";
+                        const drawSound = new Audio("./sounds/draw.mp3");
+                        drawSound.play();
+                        setTimeout(function() {
+                            reStageGameNextRoundAdvanced();
+                        },3000);
+                    }
+                    else if(userSelectValue === 'rock' &&  cpuElement1 === 'paper'){
+                        const cpuWinsSound = new Audio("./sounds/paperfinal.mp3");
+                        cpuWinsSound.play();
+                        setTimeout(() => {
+                            cpuWinsEachRoundAdvanced();
+                        }, 6000);
+                    }
+                    else if(userSelectValue === 'paper' &&  cpuElement1 === 'scissors'){
+                        const cpuWinsSound = new Audio("./sounds/scissorsfinal.mp3");
+                        cpuWinsSound.play();
+                        setTimeout(() => {
+                            cpuWinsEachRoundAdvanced();
+                        }, 5000);
+                    }
+                    else if(userSelectValue === 'scissors' &&  cpuElement1 === 'rock'){
+                        const cpuWinsSound = new Audio("./sounds/rockfinal.mp3");
+                        cpuWinsSound.play();
+                        setTimeout(() => {
+                            cpuWinsEachRoundAdvanced();
+                        }, 6000);
+                        
+                    }
+                    else if(userSelectValue === 'paper' &&  cpuElement1 === 'rock'){
+                        const userWinsSound = new Audio("./sounds/paperfinal.mp3");
+                        userWinsSound.play();
+                        setTimeout(() => {
+                            userWinsEachRoundAdvanced();
+                        }, 6000);
+                    }
+                    else if(userSelectValue === 'scissors' &&  cpuElement1 === 'paper'){
+                        const userWinsSound = new Audio("./sounds/scissorsfinal.mp3");
+                        userWinsSound.play();
+                        setTimeout(() => {
+                            userWinsEachRoundAdvanced();
+                        }, 5000);
+                    }
+                    else if(userSelectValue === 'rock' &&  cpuElement1 === 'scissors'){
+                        const userWinsSound = new Audio("./sounds/rockfinal.mp3");
+                        userWinsSound.play();
+                        setTimeout(() => {
+                            userWinsEachRoundAdvanced();
+                        }, 6000);
+                        
+                    }
+            
+                }, 5000);
+                
+                break;
+            case 2:
+                const cpuElement2 = rpsContainer[0];
+                const cpuSelect2 = "./images/" + cpuElement2 +".png";
+                // const cpu = cpuSelect;  
+                console.log("cpu attack: "+cpuElement2)
+                cpuSideRenderAdvanced.innerHTML = "<img src = './images/thinking.png' width=100% height=100% />";
+    
+                setTimeout(function() {
+            
+                    cpuSideRenderAdvanced.innerHTML = " ";
+            
+                    const imgCpu = document.createElement('img');
+                    
+                    imgCpu.src = cpuSelect2;
+                    cpuSideRenderAdvanced.appendChild(imgCpu);
+                    
+                    cpuSideRenderAdvanced.style.height = '20%';
+                    cpuSideRenderAdvanced.style.width = '20%';
+                    
+                    processingBar.style.display = 'block';
+            
+                    processingBar.style.marginTop = "5px";
+                    processingBar.style.marginBottom = "10px";
+                    processingBar.style.borderRadius = "15px";
+            
+            
+            
+                    if(cpuElement2 === 'rock'){
+                        const cpuRockSound = new Audio("./sounds/rock.mp3");
+                        cpuRockSound.play();
+                
+                    } else if (cpuElement2 === 'paper'){
+                        const cpuPaperSound = new Audio("./sounds/paper.mp3");
+                        cpuPaperSound.play();
+                
+                    }else {
+                        const cpuScissorsSound = new Audio("./sounds/scissors.mp3");
+                        cpuScissorsSound.play();
+                    }
+            
+                }, 4000);  
+                
+                setTimeout(function() {
+                    if((userSelectValue === 'rock' && cpuElement2 === 'rock') || (userSelectValue === 'paper' && cpuElement2 === 'paper') || (userSelectValue === 'scissors' &&  cpuElement2 === 'scissors')){
+                        processingBar.innerText = "Draw";
+                        processingBar.style.backgroundColor = "blue";
+                        const drawSound = new Audio("./sounds/draw.mp3");
+                        drawSound.play();
+                        setTimeout(function() {
+                            reStageGameNextRoundAdvanced();
+                        },3000);
+                    }
+                    else if(userSelectValue === 'rock' &&  cpuElement2 === 'paper'){
+                        const cpuWinsSound = new Audio("./sounds/paperfinal.mp3");
+                        cpuWinsSound.play();
+                        setTimeout(() => {
+                            cpuWinsEachRoundAdvanced();
+                        }, 6000);
+                    }
+                    else if(userSelectValue === 'paper' &&  cpuElement2 === 'scissors'){
+                        const cpuWinsSound = new Audio("./sounds/scissorsfinal.mp3");
+                        cpuWinsSound.play();
+                        setTimeout(() => {
+                            cpuWinsEachRoundAdvanced();
+                        }, 5000);
+                    }
+                    else if(userSelectValue === 'scissors' &&  cpuElement2 === 'rock'){
+                        const cpuWinsSound = new Audio("./sounds/rockfinal.mp3");
+                        cpuWinsSound.play();
+                        setTimeout(() => {
+                            cpuWinsEachRoundAdvanced();
+                        }, 6000);
+                        
+                    }
+                    else if(userSelectValue === 'paper' &&  cpuElement2 === 'rock'){
+                        const userWinsSound = new Audio("./sounds/paperfinal.mp3");
+                        userWinsSound.play();
+                        setTimeout(() => {
+                            userWinsEachRoundAdvanced();
+                        }, 6000);
+                    }
+                    else if(userSelectValue === 'scissors' &&  cpuElement2 === 'paper'){
+                        const userWinsSound = new Audio("./sounds/scissorsfinal.mp3");
+                        userWinsSound.play();
+                        setTimeout(() => {
+                            userWinsEachRoundAdvanced();
+                        }, 5000);
+                    }
+                    else if(userSelectValue === 'rock' &&  cpuElement2 === 'scissors'){
+                        const userWinsSound = new Audio("./sounds/rockfinal.mp3");
+                        userWinsSound.play();
+                        setTimeout(() => {
+                            userWinsEachRoundAdvanced();
+                        }, 6000);
+                        
+                    }
+            
+                }, 5000);
+                
+                break;
+        
+            default:
+                console.log("nothing here")
+                break;
         }
+    
+        // if(mNumber === "0"){
+        //     return "1"
+        // }
+        // else if(mNumber === "1"){
+        //     return "2"
+        // }
+        // if(mNumber === "2"){
+        //     return "0"
+        // }
+        
+    
+       
+         
+    
+        
+        // console.log("cpu select: " + cpuSelect);
+        // console.log("user select: "+userValue);
+    
+    // gameStartsNowAdvanced(rpsContainer[magicNumber]); 
+    // console.log("killer number element: "+rpsContainer[magicNumber])   
+});
 
-    }, 5000);
-     
-    
-    
-    console.log("cpu select: " + cpu);
-    console.log("user select: "+userValue);
-}
+
+
+
+// console.log("magic number is: "+magicNumber);
+
+
+
 
 function reStageGameNextRoundAdvanced(){
     document.querySelector('body').style.backgroundColor = "##643843";
@@ -967,12 +1214,12 @@ function reStageGameNextRoundAdvanced(){
         processingBar.style.backgroundColor = 'red';
         roundCount.innerText++;
         gameRunner --;
-        console.log("game runner remains: "+gameRunner);
+        // console.log("game runner remains: "+gameRunner);
     } 
 
     
-console.log("now round: "+roundCount.innerText);
-console.log("game runner now: "+gameRunner);
+// console.log("now round: "+roundCount.innerText);
+// console.log("game runner now: "+gameRunner);
 }
 
 export function userWinsEachRoundAdvanced(){
